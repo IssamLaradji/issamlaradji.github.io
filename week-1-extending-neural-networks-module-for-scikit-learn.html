@@ -6,10 +6,11 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="author" content="Issam Laradji" />
-        <title>Tags</title>
+        <title>Week 1 - Extending Neural Networks Module for scikit-learn</title>
         
-        <meta name="description" content="" />
-        <meta name="keywords" content="Blog "/>
+<meta name="description" content="&lt;p&gt;Starting my first task for the GSoC 2014 project.
+Will be finishing the Multi-layer Perceptron pull request and its documentation this week: 19 May to 26 May.&lt;/p&gt;
+&lt;p&gt;The relevant Github link is, &lt;a href=&#34;https://github.com/scikit-learn/scikit-learn/pull/2120&#34;&gt;https://github.com/scikit-learn/scikit-learn/pull/2120&lt;/a&gt; &lt;/p&gt;" />
 
         <!--[if !IE 7]>
         <style type="text/css">
@@ -21,6 +22,7 @@
         <script src="./theme/js/modernizr.js"></script>
 
         <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Issam Laradji Full Atom Feed" />
+        <link href="/feeds/gsoc-2014.atom.xml" type="application/atom+xml" rel="alternate" title="Issam Laradji Categories Atom Feed" />
 
     </head>
       
@@ -56,7 +58,7 @@
                                 font-size: x-large;" href="pdfs/cv.pdf">CV</a></li>
                         </ul>
 <!--                         <ul class="right">
-                            <li><a href="./category/gsoc-2014.html">GSoC 2014</a></li>
+                            <li class="active"><a href="./category/gsoc-2014.html">GSoC 2014</a></li>
                         </ul> -->
                     </section>
                 </nav>
@@ -65,12 +67,109 @@
 
             
                 <div id="contents" class="issami">
-<div class="row">
+<div class="row" style="min-height:  50rem;">
     <div class="small-12 columns article">
-        <h2>Tags</h2>
-        <section>
-            <p class='tag-page'>
-            </p>    
+        <h2>Week 1 - Extending Neural Networks Module for scikit-learn</h2>
+        <div class="row info-bar" style="margin-left:-1.25rem;margin-bottom:6px;">
+    <div class="small-12 columns">
+        <ul class="inline-list">
+            <li><span><i class="fa fa-calendar"></i>&nbsp; Mon 19 May 2014</span></li>
+            <li><span><i class="fa fa-folder-open"></i>&nbsp; <a href="./category/gsoc-2014.html">GSoC 2014</a></span></li>
+        </ul>
+    </div>
+</div>
+        <section class="article" style="margin-bottom: 5rem;">
+            <p>Starting my first task for the GSoC 2014 project.
+Will be finishing the Multi-layer Perceptron pull request and its documentation this week: 19 May to 26 May.</p>
+<p>The relevant Github link is, <a href="https://github.com/scikit-learn/scikit-learn/pull/2120">https://github.com/scikit-learn/scikit-learn/pull/2120</a> </p>    
+        </section>
+        <section >
+                <style>
+#pcs-comment-form input,
+#pcs-comment-form textarea {
+    width: 100%;
+}
+#pcs-comment-form-display-replyto {
+    border: solid 1px black;
+    padding: 2px;
+}
+#pcs-comment-form-display-replyto p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+#pcs-comments ul {
+    list-style: none;
+}
+#pcs-comments .comment-left {
+    display: table-cell;
+    padding-right: 10px;
+}
+#pcs-comments .comment-body {
+    display: table-cell;
+    vertical-align: top;
+    width: 100%;
+}
+</style>
+
+    <section id="pcs-comments">
+    <header>
+        <h2>Comments</h2>
+        <hr/>
+    </header>
+        <p>There are no comments yet.</p>
+    <section>
+    <form id="pcs-comment-form" action="#">
+        <legend>Add a Comment</legend>
+        <input type="hidden" id="pcs-comment-form-input-replyto">
+        <fieldset>
+            <label for="pcs-comment-form-input-name">Name</label>
+            <input  id="pcs-comment-form-input-name" type="text" placeholder="Enter your name or nickname" />
+        </fieldset>
+        <fieldset>
+            <label for="pcs-comment-form-input-website">Website</label>
+            <input  id="pcs-comment-form-input-website" type="text" placeholder="Enter your website (optional)" />
+        </fieldset>
+        <fieldset>
+            <label   for="pcs-comment-form-input-textarea">Your Comment</label>
+            <textarea id="pcs-comment-form-input-textarea" rows="5" style="resize:vertical;" placeholder="Your comment"></textarea>
+            <p>You can use the <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> syntax to format your comment.</p>
+            <div style="display: none; " id="pcs-comment-form-display-replyto"></div>
+        </fieldset>
+
+        <button type="submit"
+                id="pcs-comment-form-button-submit"
+                >Post via email</button>
+
+    </form>
+</section>
+
+</section>
+
+            <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="./theme/js/comments.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            CommentSystem.email_user   = "emailuser";
+            CommentSystem.email_domain = "example.com";
+            CommentSystem.display_replyto_html = function(comment_content, article_slug, author) { 
+                return ''
+                    + '<button style="float:right;" onclick="CommentSystem.cancelReply(); return false;" title="Cancel the reply">'
+                    +   '×'
+                    + '</button>'
+                    + '<p>This comment will be posted as a reply to \'<a title="'+comment_content+'" href="#comment-'+article_slug+'">'+author+'</a>\'</p>';
+            };
+
+            $('#pcs-comment-form').on("submit",
+                function( event )
+                {
+                    event.preventDefault();
+                    $(location).attr('href', CommentSystem.getMailtoLink("week-1-extending-neural-networks-module-for-scikit-learn"));
+                }
+            );
+        });
+    </script>
+
+
         </section>
     </div>
 </div>

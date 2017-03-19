@@ -1,0 +1,297 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <link rel="shortcut icon" href="" />
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content="Issam Laradji" />
+        <title>Mid-term Summary - Extending Neural Networks Module for scikit-learn</title>
+        
+<meta name="description" content="&lt;p&gt;The objective is to implement neural network algorithms in a clean, well-tested code using the scikit-learn API. The algorithms are meant to be user-friendly and easy to edit and scale for those who wish to extend, or debug them if necessary.&lt;/p&gt;
+&lt;p&gt;Since the start of GSoC 2014 until now, I …&lt;/p&gt;" />
+
+        <!--[if !IE 7]>
+        <style type="text/css">
+            #main-content {display:table;height:100%}
+        </style>
+        <![endif]-->
+        <link rel="stylesheet" href="./theme/css/backdrop.css" />
+        <link rel="stylesheet" href="./theme/css/pygments.css" />
+        <script src="./theme/js/modernizr.js"></script>
+
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Issam Laradji Full Atom Feed" />
+        <link href="/feeds/gsoc-2014.atom.xml" type="application/atom+xml" rel="alternate" title="Issam Laradji Categories Atom Feed" />
+
+    </head>
+      
+
+    <body>
+        <!-- <div class="master-row"> -->
+            <div class="main-content">
+            <div class="row title-bar issami" style="margin-bottom: 2rem;">
+    <div class="small-12 columns">
+        <h1><a href=".">Issam Laradji</a></h1><h2> <small></small></h2>
+    </div>
+</div>
+
+            <div class="row title-bar">
+                <nav class="top-bar" data-topbar role="navigation">
+                <div class="issami">
+                    <ul class="title-area">
+                        <li class="name"></li>
+                        <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+                    </ul>
+                    <section class="top-bar-section">
+
+                        <ul class="left">
+<!--                                                             <a href="index.html">Home</a>
+                              <a href="https://github.com/IssamLaradji">Github</a>
+                              <a href="pdfs/cv.pdf">CV</a>
+ -->
+                            <li ><a style="
+                                font-size: x-large;" href="index.html">Home</a></li>
+                            <li ><a style="
+                                font-size: x-large;" href="https://github.com/IssamLaradji">Github</a></li>
+                            <li ><a style="
+                                font-size: x-large;" href="pdfs/cv.pdf">CV</a></li>
+                        </ul>
+<!--                         <ul class="right">
+                            <li class="active"><a href="./category/gsoc-2014.html">GSoC 2014</a></li>
+                        </ul> -->
+                    </section>
+                </nav>
+                </div>
+                </div>
+
+            
+                <div id="contents" class="issami">
+<div class="row" style="min-height:  50rem;">
+    <div class="small-12 columns article">
+        <h2>Mid-term Summary - Extending Neural Networks Module for scikit-learn</h2>
+        <div class="row info-bar" style="margin-left:-1.25rem;margin-bottom:6px;">
+    <div class="small-12 columns">
+        <ul class="inline-list">
+            <li><span><i class="fa fa-calendar"></i>&nbsp; Sun 22 June 2014</span></li>
+            <li><span><i class="fa fa-folder-open"></i>&nbsp; <a href="./category/gsoc-2014.html">GSoC 2014</a></span></li>
+        </ul>
+    </div>
+</div>
+        <section class="article" style="margin-bottom: 5rem;">
+            <p>The objective is to implement neural network algorithms in a clean, well-tested code using the scikit-learn API. The algorithms are meant to be user-friendly and easy to edit and scale for those who wish to extend, or debug them if necessary.</p>
+<p>Since the start of GSoC 2014 until now, I completed two modules, multi-layer perceptron (mlp) #3204 and mlp with pre-training #3281, which are pending final review for merging. I also implemented the extreme learning machine (elm) algorithm #3306 which hasn't been reviewed yet and more components such as test files, examples, and documentations are required. However, I am confident that I will complete it by the deadline I set in the proposal.</p>
+<p>In the following three sections, I will explain the modules in more detail.</p>
+<p>1) Multi-layer perceptron  #3204
+Multi-layer perceptron (MLP) supports more than one hidden layer allowing it to construct highly non-linear functions. Figure 1 displays an MLP with 1 hidden layer.</p>
+<p><img alt="" src="images/midterm1.png"></p>
+<p>To define the number of hidden layers and their neurons, one can simply run the following statement.</p>
+<p>The list '[150, 100]' means that two hidden layers are constructed with 150 and 100, neurons respectively.</p>
+<p>Further, MLP can be used for reinforcement learning where each time step makes a new training sample. It can use the <code>partial_fit</code> method to update its weights on per sample basis in real-time (stochastic update).</p>
+<p>MLP also consists of a regularization term <code>alpha</code> as part of its parameters, whose value determines the degree of non-linearity the function is meant to have. Therefore, if the algorithm is overfitting, it is desirable to increase <code>alpha</code> to have a more linear function. Figure 2 demonstrates  the decision boundaries learnt by mlp with different alpha values.</p>
+<p><img alt="" src="images/midterm2.png"></p>
+<p>Figure 2 shows that the higher the value of <code>alpha</code>, the less curves the decision boundary will have.</p>
+<p>The implementation has passed through various test cases to prevent unexpected behavior. One of the test cases involves comparing between the algorithm's analytic computation of the gradient and its numerical computation. Since the difference between the values was found to be at most a very small value means the backpropagation algorithm is working as expected.</p>
+<p>2) MLP with pre-training #3281</p>
+<p>One issue with MLP is that it involves random weights' initialization. The weights could land in a poor position in the optimization (see Figure 3) whose final solutions are not as good as they could be.</p>
+<p><img alt="" src="images/midterm3.png"></p>
+<p>Pre-training is one scheme to have the initial weights land in a better start. Restricted boltzmann machines (RBMs) can find such initial weights. Figure 4 shows the process of pre-training.</p>
+<p><img alt="" src="images/midterm4.png"></p>
+<p>For each layer in the network, there is an RBM that trains on the inputs given for that layer. The final weights of the RBM are given as the initial weights of the corresponding layer in the network.</p>
+<p>Running an example of pre-training has showed that RBMs can improve the final performance. For instance, on the digits the dataset, the following results were obtained.</p>
+<p>1) Testing accuracy of mlp without pretraining: 0.964
+2) Testing accuracy of mlp with pretraining: 0.978</p>
+<p>3) Extreme learning machine (elm) #3306 </p>
+<p>Much of the criticism towards MLP is in its long training time. MLP uses the slow gradient descent to updates its weights iteratively, involving many demanding computations.</p>
+<p>Extreme learning machines (ELMs) [1], on the other hand, can train single hidden layer feedforward networks (SLFNs) using least square solutions instead of gradient descent. This scheme requires only few matrix operations, making it much faster than gradient descent. It also has a strong generalization power since it uses least-squares to find its solutions.</p>
+<p>The algorithm has been implemented and it passed the travis tests. But it still awaits more thorough review and test files to anticipate errors.</p>
+<p>I believe I will finalize the module by 29 June as per the proposal.</p>
+<p>Remaining work</p>
+<p>In the remaining weeks my tasks are broken down as follows.</p>
+<p>Week 7, 8 (June 30 - July 13)</p>
+<p>I will implement and revise regularized ELMs [3] and weighted ELMs [4], and extend the ELMs documentation.</p>
+<p>Week 9, 10  (July 14- July 27)</p>
+<p>I will implement and revise Sequential ELMs [2], and extend the ELMs documentation.</p>
+<p>Week 11, 12 (July 28- August 10)</p>
+<p>I will implement and revise Kernel-Based ELMs, and extend the ELMs documentation.</p>
+<p>Week 13 - Wrap-up</p>
+<p>Acknowledgements</p>
+<p>I would like to thank my mentors and reviewers including @ogrisel, @larsmans @jnothman, @kasternkyle, @AlexanderFabisch for dedicating their time in providing useful feedback and comments, making sure the work meets high-quality standards. I sincerely appreciate the time PSF admins take to oversee the contributers as it encourages us to set a higher bar for quality work. I would also like to thank GSoC 2014, as this wouldn't have been possible if it hadn't been for their support and motivation.</p>
+<p>References</p>
+<p>[1]    http://www.di.unito.it/~cancelli/retineu11_12/ELM-NC-2006.pdf</p>
+<p>[2]    http://www.ntu.edu.sg/home/egbhuang/pdf/OS-ELM-TNN.pdf</p>
+<p>[3]    http://www.ntu.edu.sg/home/egbhuang/pdf/ELM-Unified-Learning.pdf</p>
+<p>[4]   Zong, Weiwei, Guang-Bin Huang, and Yiqiang Chen. "Weighted extreme learning machine for imbalance learning." Neurocomputing 101 (2013): 229-242.</p>    
+        </section>
+        <section >
+                <style>
+#pcs-comment-form input,
+#pcs-comment-form textarea {
+    width: 100%;
+}
+#pcs-comment-form-display-replyto {
+    border: solid 1px black;
+    padding: 2px;
+}
+#pcs-comment-form-display-replyto p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+#pcs-comments ul {
+    list-style: none;
+}
+#pcs-comments .comment-left {
+    display: table-cell;
+    padding-right: 10px;
+}
+#pcs-comments .comment-body {
+    display: table-cell;
+    vertical-align: top;
+    width: 100%;
+}
+</style>
+
+    <section id="pcs-comments">
+    <header>
+        <h2>Comments</h2>
+        <hr/>
+    </header>
+        <p>There are no comments yet.</p>
+    <section>
+    <form id="pcs-comment-form" action="#">
+        <legend>Add a Comment</legend>
+        <input type="hidden" id="pcs-comment-form-input-replyto">
+        <fieldset>
+            <label for="pcs-comment-form-input-name">Name</label>
+            <input  id="pcs-comment-form-input-name" type="text" placeholder="Enter your name or nickname" />
+        </fieldset>
+        <fieldset>
+            <label for="pcs-comment-form-input-website">Website</label>
+            <input  id="pcs-comment-form-input-website" type="text" placeholder="Enter your website (optional)" />
+        </fieldset>
+        <fieldset>
+            <label   for="pcs-comment-form-input-textarea">Your Comment</label>
+            <textarea id="pcs-comment-form-input-textarea" rows="5" style="resize:vertical;" placeholder="Your comment"></textarea>
+            <p>You can use the <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> syntax to format your comment.</p>
+            <div style="display: none; " id="pcs-comment-form-display-replyto"></div>
+        </fieldset>
+
+        <button type="submit"
+                id="pcs-comment-form-button-submit"
+                >Post via email</button>
+
+    </form>
+</section>
+
+</section>
+
+            <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="./theme/js/comments.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            CommentSystem.email_user   = "emailuser";
+            CommentSystem.email_domain = "example.com";
+            CommentSystem.display_replyto_html = function(comment_content, article_slug, author) { 
+                return ''
+                    + '<button style="float:right;" onclick="CommentSystem.cancelReply(); return false;" title="Cancel the reply">'
+                    +   '×'
+                    + '</button>'
+                    + '<p>This comment will be posted as a reply to \'<a title="'+comment_content+'" href="#comment-'+article_slug+'">'+author+'</a>\'</p>';
+            };
+
+            $('#pcs-comment-form').on("submit",
+                function( event )
+                {
+                    event.preventDefault();
+                    $(location).attr('href', CommentSystem.getMailtoLink("mid-term-summary-extending-neural-networks-module-for-scikit-learn"));
+                }
+            );
+        });
+    </script>
+
+
+        </section>
+    </div>
+</div>
+                </div>
+
+                
+            </div>
+               </div>
+            </div> 
+     
+        
+        
+        <div class="row" >
+        <footer class="show-for-large-up">
+<div class="row issami" >
+    <div class="small-6 medium-3 columns">
+<!--         <ul class="left-nav">
+            <li><a href=".">Home &nbsp;<i class="fa fa-home fa-fw"></i></a></li>
+            <li><a href="./categories.html">Categories &nbsp;<i class="fa fa-folder-open fa-fw"></i></a></li>
+        </ul> -->
+    </div>
+    <div class="small-6 medium-3 medium-push-6 columns" >
+<!--         <ul class="right-nav">
+            <li><a href="/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i>&nbsp; Feed</a></li>
+            <li><a href="./archives.html"><i class="fa fa-archive fa-fw"></i>&nbsp; Archives</a></li>
+        </ul> -->
+    </div>
+    <div class="small-12 medium-6 medium-pull-3 columns text-center" >
+    </div>
+    <div class="small-12 columns sub-footer" style="height: 100%;">
+        <hr>
+<!--         <div class="small-12 medium-6 columns">
+            <p class="small-text-center medium-text-left">
+                &copy;  Issam Laradji 
+                 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="cc.png" /></a>
+            </p>
+        </div> -->
+        <div class="small-12 medium-6 columns">
+<!--             <p class="small-text-center medium-text-right">
+                Proudly powered by <a href="http://blog.getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+            </p> -->
+        </div>
+    </div>
+</div>                </footer>
+            <footer class="hide-for-large-up">
+<div class="row issami" >
+    <div class="small-6 medium-3 columns">
+<!--         <ul class="left-nav">
+            <li><a href=".">Home &nbsp;<i class="fa fa-home fa-fw"></i></a></li>
+            <li><a href="./categories.html">Categories &nbsp;<i class="fa fa-folder-open fa-fw"></i></a></li>
+        </ul> -->
+    </div>
+    <div class="small-6 medium-3 medium-push-6 columns" >
+<!--         <ul class="right-nav">
+            <li><a href="/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i>&nbsp; Feed</a></li>
+            <li><a href="./archives.html"><i class="fa fa-archive fa-fw"></i>&nbsp; Archives</a></li>
+        </ul> -->
+    </div>
+    <div class="small-12 medium-6 medium-pull-3 columns text-center" >
+    </div>
+    <div class="small-12 columns sub-footer" style="height: 100%;">
+        <hr>
+<!--         <div class="small-12 medium-6 columns">
+            <p class="small-text-center medium-text-left">
+                &copy;  Issam Laradji 
+                 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="cc.png" /></a>
+            </p>
+        </div> -->
+        <div class="small-12 medium-6 columns">
+<!--             <p class="small-text-center medium-text-right">
+                Proudly powered by <a href="http://blog.getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+            </p> -->
+        </div>
+    </div>
+</div>            </footer>
+        </div>
+        
+        
+        <script src="./theme/js/jquery.min.js"></script>
+        <script src="./theme/js/foundation.min.js"></script>
+        <script src="./theme/js/app.js"></script>
+    </body>
+  
+</html>
