@@ -1,7 +1,7 @@
 //requires jquery
 var CommentSystem = {
-    email_user:   "not set",
-    email_domain: "not set",
+    email_user:   "issam.laradji",
+    email_domain: "gmail.com",
     display_replyto_html: function(comment_content, article_slug, author) {return ''},
 
     cancelReply: function() {
