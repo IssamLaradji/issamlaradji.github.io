@@ -1,6 +1,19 @@
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      "HTML-CSS": {
+      styles: {
+      ".MathJax .mo, .MathJax .mi": {color: "black ! important"}}
+      },
+      tex2jax: {inlineMath: [['$','$'], ['\\\\(','\\\\)']],processEscapes: true}
+      });
+    </script>
+
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
         <link rel="shortcut icon" href="" />
 
         <meta charset="utf-8" />
@@ -10,11 +23,16 @@
         
 <meta name="description" content="&lt;p&gt;GSoC 2014 has been an extraordinary experience. Not only did it encourage me to develop much needed open-source implementation of neural network algorithms, but also exposed me to a great, diverse community. I also learned useful practices for maintaining clean, quality code and writing accessible documentation. This prepared me to …&lt;/p&gt;" />
 
+<!--  -->
+
+
         <!--[if !IE 7]>
         <style type="text/css">
             #main-content {display:table;height:100%}
         </style>
         <![endif]-->
+        <link rel="stylesheet" href="./theme/css/ipython.min.css" />
+        
         <link rel="stylesheet" href="./theme/css/backdrop.css" />
         <link rel="stylesheet" href="./theme/css/pygments.css" />
         <script src="./theme/js/modernizr.js"></script>
@@ -40,7 +58,7 @@
             <div class="main-content">
             <div class="row title-bar issami" style="margin-bottom: 2rem;">
     <div class="small-12 columns">
-        <h1><a href=".">Issam Laradji</a></h1><h2> <small></small></h2>
+        <h1><a href=".">Data Analytics</a></h1><h2> <small></small></h2>
     </div>
 </div>
 
@@ -56,17 +74,16 @@
                         <ul class="left">
 <!--                                                             <a href="index.html">Home</a>
                               <a href="https://github.com/IssamLaradji">Github</a>
-                              <a href="pdfs/cv.pdf">CV</a>
  -->
                             <li ><a style="
                                 font-size: x-large;" href="index.html">Home</a></li>
                             <li ><a style="
                                 font-size: x-large;" href="https://github.com/IssamLaradji">Github</a></li>
-                            <li ><a style="
-                                font-size: x-large;" href="pdfs/cv.pdf">CV</a></li>
                         </ul>
 <!--                         <ul class="right">
                             <li class="active"><a href="./category/gsoc-2014.html">GSoC 2014</a></li>
+                            <li><a href="./category/machine-learning.html">Machine Learning</a></li>
+                            <li><a href="./category/tutorials.html">Tutorials</a></li>
                         </ul> -->
                     </section>
                 </nav>
@@ -117,9 +134,9 @@ This wouldn't have been possible without the profound, sincere assistance of my 
 the result passes through an element-wise non-linear activation function, typically a sigmoid such as the tanh, and logistic functions; and
 last, it trains a linear one vs. rest classifier or a multi-output ridge regression model.</p>
 <p>The algorithm trains a single-hidden layer feedforward network by computing the hidden layer values using randomized parameters, then solving  for the output weights using least-square solutions. For prediction, after computing the forward pass, the continuous output values pass through a gate function converting them to integers that represent classes. The function representing  ELM is given as, $y=\beta\cdot f(W^T \cdot X + b ) $</p>
-<p>where matrices $X$ and $y$ represent the input samples and target
-values, respectively; matrices $W$ and $b$ are randomly generated based on a uniform distribution; matrix $\beta$ contains unknown variables; and $f(\cdot)$ is the non-linear, component-wise activation function.
-ELM solves for $\beta$ using the ridge regression implementation, given as,  $(H^T H + (1 / C) * I)^{-1} H^T y$ where $H = f(W^TX+b)$, $C$ is a regularization term which controls the linearity of the decision function, and $I$ is the identity matrix.
+<p>where matrices <span class="math">\(X\)</span> and <span class="math">\(y\)</span> represent the input samples and target
+values, respectively; matrices <span class="math">\(W\)</span> and <span class="math">\(b\)</span> are randomly generated based on a uniform distribution; matrix <span class="math">\(\beta\)</span> contains unknown variables; and <span class="math">\(f(\cdot)\)</span> is the non-linear, component-wise activation function.
+ELM solves for <span class="math">\(\beta\)</span> using the ridge regression implementation, given as,  <span class="math">\((H^T H + (1 / C) * I)^{-1} H^T y\)</span> where <span class="math">\(H = f(W^TX+b)\)</span>, <span class="math">\(C\)</span> is a regularization term which controls the linearity of the decision function, and <span class="math">\(I\)</span> is the identity matrix.
 We demonstrated the effects of tuning two main hyperparameters, 
 weight_scale, which controls the variance of the random projection weights, the higher the value the more the less the regularization and therefore more overfitting. 
 C, which controls the regularization strength of the output linear model, which regularizes the hidden-to-output weights in the same way as weight_scale regularizes the input-to-hidden weights.</p>
@@ -154,94 +171,69 @@ n_hidden, which controls the number of hidden layer nodes.</p>
 <h2>[6] https://github.com/IssamLaradji/scikit-learn/blob/Extreme-Learning-Machines/sklearn/utils/class_weight.py PR References</h2>
 <p>1) Multi-layer perceptron: https://github.com/scikit-learn/scikit-learn/pull/3204</p>
 <p>2) Multi-layer perceptron with pre-training: https://github.com/scikit-learn/scikit-learn/pull/3281</p>
-<p>3) Extreme learning machines: https://github.com/scikit-learn/scikit-learn/pull/3306</p>    
+<p>3) Extreme learning machines: https://github.com/scikit-learn/scikit-learn/pull/3306</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>    
         </section>
 <!--         <section >
-                <style>
-#pcs-comment-form input,
-#pcs-comment-form textarea {
-    width: 100%;
-}
-#pcs-comment-form-display-replyto {
-    border: solid 1px black;
-    padding: 2px;
-}
-#pcs-comment-form-display-replyto p {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-}
-#pcs-comments ul {
-    list-style: none;
-}
-#pcs-comments .comment-left {
-    display: table-cell;
-    padding-right: 10px;
-}
-#pcs-comments .comment-body {
-    display: table-cell;
-    vertical-align: top;
-    width: 100%;
-}
-</style>
-
-    <section id="pcs-comments">
-    <header>
-        <h2>Comments</h2>
-        <hr/>
-    </header>
-        <p>There are no comments yet.</p>
-    <section>
-    <form id="pcs-comment-form" action="#">
-        <legend>Add a Comment</legend>
-        <input type="hidden" id="pcs-comment-form-input-replyto">
-        <fieldset>
-            <label for="pcs-comment-form-input-name">Name</label>
-            <input  id="pcs-comment-form-input-name" type="text" placeholder="Enter your name or nickname" />
-        </fieldset>
-        <fieldset>
-            <label for="pcs-comment-form-input-website">Website</label>
-            <input  id="pcs-comment-form-input-website" type="text" placeholder="Enter your website (optional)" />
-        </fieldset>
-        <fieldset>
-            <label   for="pcs-comment-form-input-textarea">Your Comment</label>
-            <textarea id="pcs-comment-form-input-textarea" rows="5" style="resize:vertical;" placeholder="Your comment"></textarea>
-            <p>You can use the <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> syntax to format your comment.</p>
-            <div style="display: none; " id="pcs-comment-form-display-replyto"></div>
-        </fieldset>
-
-        <button type="submit"
-                id="pcs-comment-form-button-submit"
-                >Post</button>
-
-    </form>
-</section>
-
-</section>
-
-            <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="./theme/js/comments.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            CommentSystem.email_user   = "issam.laradji";
-            CommentSystem.email_domain = "gmail.com";
-            CommentSystem.display_replyto_html = function(comment_content, article_slug, author) { 
-                return ''
-                    + '<button style="float:right;" onclick="CommentSystem.cancelReply(); return false;" title="Cancel the reply">'
-                    +   '×'
-                    + '</button>'
-                    + '<p>This comment will be posted as a reply to \'<a title="'+comment_content+'" href="#comment-'+article_slug+'">'+author+'</a>\'</p>';
-            };
-
-            $('#pcs-comment-form').on("submit",
-                function( event )
-                {
-                    event.preventDefault();
-                    $(location).attr('href', CommentSystem.getMailtoLink("final-summary-neural-networks"));
-                }
-            );
-        });
-    </script>
-
+                
+    
+    
 
         </section> -->
         <hr>

@@ -28,9 +28,9 @@ This wouldn't have been possible without the profound, sincere assistance of my 
 the result passes through an element-wise non-linear activation function, typically a sigmoid such as the tanh, and logistic functions; and
 last, it trains a linear one vs. rest classifier or a multi-output ridge regression model.&lt;/p&gt;
 &lt;p&gt;The algorithm trains a single-hidden layer feedforward network by computing the hidden layer values using randomized parameters, then solving  for the output weights using least-square solutions. For prediction, after computing the forward pass, the continuous output values pass through a gate function converting them to integers that represent classes. The function representing  ELM is given as, $y=\beta\cdot f(W^T \cdot X + b ) $&lt;/p&gt;
-&lt;p&gt;where matrices $X$ and $y$ represent the input samples and target
-values, respectively; matrices $W$ and $b$ are randomly generated based on a uniform distribution; matrix $\beta$ contains unknown variables; and $f(\cdot)$ is the non-linear, component-wise activation function.
-ELM solves for $\beta$ using the ridge regression implementation, given as,  $(H^T H + (1 / C) * I)^{-1} H^T y$ where $H = f(W^TX+b)$, $C$ is a regularization term which controls the linearity of the decision function, and $I$ is the identity matrix.
+&lt;p&gt;where matrices &lt;span class="math"&gt;\(X\)&lt;/span&gt; and &lt;span class="math"&gt;\(y\)&lt;/span&gt; represent the input samples and target
+values, respectively; matrices &lt;span class="math"&gt;\(W\)&lt;/span&gt; and &lt;span class="math"&gt;\(b\)&lt;/span&gt; are randomly generated based on a uniform distribution; matrix &lt;span class="math"&gt;\(\beta\)&lt;/span&gt; contains unknown variables; and &lt;span class="math"&gt;\(f(\cdot)\)&lt;/span&gt; is the non-linear, component-wise activation function.
+ELM solves for &lt;span class="math"&gt;\(\beta\)&lt;/span&gt; using the ridge regression implementation, given as,  &lt;span class="math"&gt;\((H^T H + (1 / C) * I)^{-1} H^T y\)&lt;/span&gt; where &lt;span class="math"&gt;\(H = f(W^TX+b)\)&lt;/span&gt;, &lt;span class="math"&gt;\(C\)&lt;/span&gt; is a regularization term which controls the linearity of the decision function, and &lt;span class="math"&gt;\(I\)&lt;/span&gt; is the identity matrix.
 We demonstrated the effects of tuning two main hyperparameters, 
 weight_scale, which controls the variance of the random projection weights, the higher the value the more the less the regularization and therefore more overfitting. 
 C, which controls the regularization strength of the output linear model, which regularizes the hidden-to-output weights in the same way as weight_scale regularizes the input-to-hidden weights.&lt;/p&gt;
@@ -65,7 +65,64 @@ n_hidden, which controls the number of hidden layer nodes.&lt;/p&gt;
 &lt;h2&gt;[6] https://github.com/IssamLaradji/scikit-learn/blob/Extreme-Learning-Machines/sklearn/utils/class_weight.py PR References&lt;/h2&gt;
 &lt;p&gt;1) Multi-layer perceptron: https://github.com/scikit-learn/scikit-learn/pull/3204&lt;/p&gt;
 &lt;p&gt;2) Multi-layer perceptron with pre-training: https://github.com/scikit-learn/scikit-learn/pull/3281&lt;/p&gt;
-&lt;p&gt;3) Extreme learning machines: https://github.com/scikit-learn/scikit-learn/pull/3306&lt;/p&gt;</content></entry><entry><title>Week 9 - Progress report for the scikit-learn module</title><link href="/week-9-progress-report-for-the-scikit-learn-module.html" rel="alternate"></link><published>2014-07-27T00:00:00-07:00</published><updated>2014-07-27T00:00:00-07:00</updated><author><name>Issam Laradji</name></author><id>tag:None,2014-07-27:/week-9-progress-report-for-the-scikit-learn-module.html</id><summary type="html">&lt;p&gt;Great progress! I submitted implementations of multi-layer perceptron (mlp-link) (mlp-pretraining-link) and extreme learning machines (elm-link) and their documentations as well. Yet many improvements could be made through revisions and my mentors' momentous support that they always provided throughout the summer.&lt;/p&gt;
+&lt;p&gt;3) Extreme learning machines: https://github.com/scikit-learn/scikit-learn/pull/3306&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content></entry><entry><title>Week 9 - Progress report for the scikit-learn module</title><link href="/week-9-progress-report-for-the-scikit-learn-module.html" rel="alternate"></link><published>2014-07-27T00:00:00-07:00</published><updated>2014-07-27T00:00:00-07:00</updated><author><name>Issam Laradji</name></author><id>tag:None,2014-07-27:/week-9-progress-report-for-the-scikit-learn-module.html</id><summary type="html">&lt;p&gt;Great progress! I submitted implementations of multi-layer perceptron (mlp-link) (mlp-pretraining-link) and extreme learning machines (elm-link) and their documentations as well. Yet many improvements could be made through revisions and my mentors' momentous support that they always provided throughout the summer.&lt;/p&gt;
 &lt;p&gt;Besides many corrections, a lot have been added since the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Great progress! I submitted implementations of multi-layer perceptron (mlp-link) (mlp-pretraining-link) and extreme learning machines (elm-link) and their documentations as well. Yet many improvements could be made through revisions and my mentors' momentous support that they always provided throughout the summer.&lt;/p&gt;
 &lt;p&gt;Besides many corrections, a lot have been added since the last post - here is an overview,&lt;/p&gt;
 &lt;p&gt;1)  Documentation&lt;/p&gt;
@@ -90,20 +147,77 @@ weight_scale scales the range of values that input-to-hidden weights can take.&l
 &lt;p&gt;4) Relevant test cases and examples.&lt;/p&gt;
 &lt;p&gt;I will explain the implementations in more detail below.&lt;/p&gt;
 &lt;p&gt;1) Regularized and Weighted ELMs&lt;/p&gt;
-&lt;p&gt;Assuming H is the hidden activations, $\beta$ is the hidden layer outgoing weights, and y is the target vector; regularized ELMs solves the following equation,&lt;/p&gt;
-&lt;p&gt;$\beta = (HH' + I/C)'Hy$
+&lt;p&gt;Assuming H is the hidden activations, &lt;span class="math"&gt;\(\beta\)&lt;/span&gt; is the hidden layer outgoing weights, and y is the target vector; regularized ELMs solves the following equation,&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(\beta = (HH' + I/C)'Hy\)&lt;/span&gt;
 where I is the identity matrix.&lt;/p&gt;
 &lt;p&gt;The regularization term C determines the decision boundary degree of linearity. Figure 1 shows how regularization - or reducing C - leads to a linear function.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="non-regularized (left side) vs. regularized (right side) decision boundary" src="images/week7_1.PNG"&gt;&lt;/p&gt;
-&lt;p&gt;Weighted ELMs is different from regularized ELMs, in that a diagonal weight matrix $W$ is added to the equation, yielding the following,&lt;/p&gt;
-&lt;p&gt;$\beta = (HWH' + I/C)'HWy$&lt;/p&gt;
-&lt;p&gt;Index $(i, i)$ in $W$ corresponds to how much weight is given to sample $i$, depending on the sample's class. This scheme is used to address the problem with imbalanced datasets; where a class is underrepresented by having few samples compared to other classes and therefore ignored by classifiers. Such minority classes are given higher weights such that the decision boundary is pushed away from them. Figure 2 shows the difference between applying weighting schemes for the minority class, the orange samples.&lt;/p&gt;
+&lt;p&gt;Weighted ELMs is different from regularized ELMs, in that a diagonal weight matrix &lt;span class="math"&gt;\(W\)&lt;/span&gt; is added to the equation, yielding the following,&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(\beta = (HWH' + I/C)'HWy\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Index &lt;span class="math"&gt;\((i, i)\)&lt;/span&gt; in &lt;span class="math"&gt;\(W\)&lt;/span&gt; corresponds to how much weight is given to sample &lt;span class="math"&gt;\(i\)&lt;/span&gt;, depending on the sample's class. This scheme is used to address the problem with imbalanced datasets; where a class is underrepresented by having few samples compared to other classes and therefore ignored by classifiers. Such minority classes are given higher weights such that the decision boundary is pushed away from them. Figure 2 shows the difference between applying weighting schemes for the minority class, the orange samples.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="no weights (left side); 0.618/(#samples) weight given to each class (middle side); 1000 weight cost given to the orange class (right side))" src="images/week7_2.png"&gt;&lt;/p&gt;
 &lt;p&gt;2) Sequential ELMs&lt;/p&gt;
 &lt;p&gt;Dealing with million sample datasets is problematic when they have to be in memory all at once for training. Sequential ELMs mitigates this limitation by breaking the dataset into batches and trains on them by per-batch basis using a recursive equation which is but a subtle representation of ELM's original equation. Unfortunately the implementation does not support weights yet.&lt;/p&gt;
 &lt;p&gt;3) Kernels for ELMs
 The standard initialization of ELM input weights is the result of a random kernel. However, other kernels, which are best known for training SVMs, can be used to get new hidden activations - like Radial Basis Function, Linear kernel, and the Polynomial kernel.&lt;/p&gt;
-&lt;p&gt;For the remaining time of GSoC 2014, I will complete the ELMs documentation and add any necessary changes for the completed work.&lt;/p&gt;</content></entry><entry><title>Mid-term Summary - Extending Neural Networks Module for scikit-learn</title><link href="/mid-term-summary-extending-neural-networks-module-for-scikit-learn.html" rel="alternate"></link><published>2014-06-22T00:00:00-07:00</published><updated>2014-06-22T00:00:00-07:00</updated><author><name>Issam Laradji</name></author><id>tag:None,2014-06-22:/mid-term-summary-extending-neural-networks-module-for-scikit-learn.html</id><summary type="html">&lt;p&gt;The objective is to implement neural network algorithms in a clean, well-tested code using the scikit-learn API. The algorithms are meant to be user-friendly and easy to edit and scale for those who wish to extend, or debug them if necessary.&lt;/p&gt;
+&lt;p&gt;For the remaining time of GSoC 2014, I will complete the ELMs documentation and add any necessary changes for the completed work.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content></entry><entry><title>Mid-term Summary - Extending Neural Networks Module for scikit-learn</title><link href="/mid-term-summary-extending-neural-networks-module-for-scikit-learn.html" rel="alternate"></link><published>2014-06-22T00:00:00-07:00</published><updated>2014-06-22T00:00:00-07:00</updated><author><name>Issam Laradji</name></author><id>tag:None,2014-06-22:/mid-term-summary-extending-neural-networks-module-for-scikit-learn.html</id><summary type="html">&lt;p&gt;The objective is to implement neural network algorithms in a clean, well-tested code using the scikit-learn API. The algorithms are meant to be user-friendly and easy to edit and scale for those who wish to extend, or debug them if necessary.&lt;/p&gt;
 &lt;p&gt;Since the start of GSoC 2014 until now, I …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The objective is to implement neural network algorithms in a clean, well-tested code using the scikit-learn API. The algorithms are meant to be user-friendly and easy to edit and scale for those who wish to extend, or debug them if necessary.&lt;/p&gt;
 &lt;p&gt;Since the start of GSoC 2014 until now, I completed two modules, multi-layer perceptron (mlp) #3204 and mlp with pre-training #3281, which are pending final review for merging. I also implemented the extreme learning machine (elm) algorithm #3306 which hasn't been reviewed yet and more components such as test files, examples, and documentations are required. However, I am confident that I will complete it by the deadline I set in the proposal.&lt;/p&gt;
 &lt;p&gt;In the following three sections, I will explain the modules in more detail.&lt;/p&gt;

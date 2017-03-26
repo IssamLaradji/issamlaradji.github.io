@@ -1,6 +1,19 @@
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      "HTML-CSS": {
+      styles: {
+      ".MathJax .mo, .MathJax .mi": {color: "black ! important"}}
+      },
+      tex2jax: {inlineMath: [['$','$'], ['\\\\(','\\\\)']],processEscapes: true}
+      });
+    </script>
+
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
         <link rel="shortcut icon" href="" />
 
         <meta charset="utf-8" />
@@ -11,11 +24,16 @@
 <meta name="description" content="&lt;p&gt;Great progress! I submitted implementations of multi-layer perceptron (mlp-link) (mlp-pretraining-link) and extreme learning machines (elm-link) and their documentations as well. Yet many improvements could be made through revisions and my mentors&#39; momentous support that they always provided throughout the summer.&lt;/p&gt;
 &lt;p&gt;Besides many corrections, a lot have been added since the …&lt;/p&gt;" />
 
+<!--  -->
+
+
         <!--[if !IE 7]>
         <style type="text/css">
             #main-content {display:table;height:100%}
         </style>
         <![endif]-->
+        <link rel="stylesheet" href="./theme/css/ipython.min.css" />
+        
         <link rel="stylesheet" href="./theme/css/backdrop.css" />
         <link rel="stylesheet" href="./theme/css/pygments.css" />
         <script src="./theme/js/modernizr.js"></script>
@@ -41,7 +59,7 @@
             <div class="main-content">
             <div class="row title-bar issami" style="margin-bottom: 2rem;">
     <div class="small-12 columns">
-        <h1><a href=".">Issam Laradji</a></h1><h2> <small></small></h2>
+        <h1><a href=".">Data Analytics</a></h1><h2> <small></small></h2>
     </div>
 </div>
 
@@ -57,17 +75,16 @@
                         <ul class="left">
 <!--                                                             <a href="index.html">Home</a>
                               <a href="https://github.com/IssamLaradji">Github</a>
-                              <a href="pdfs/cv.pdf">CV</a>
  -->
                             <li ><a style="
                                 font-size: x-large;" href="index.html">Home</a></li>
                             <li ><a style="
                                 font-size: x-large;" href="https://github.com/IssamLaradji">Github</a></li>
-                            <li ><a style="
-                                font-size: x-large;" href="pdfs/cv.pdf">CV</a></li>
                         </ul>
 <!--                         <ul class="right">
                             <li class="active"><a href="./category/gsoc-2014.html">GSoC 2014</a></li>
+                            <li><a href="./category/machine-learning.html">Machine Learning</a></li>
+                            <li><a href="./category/tutorials.html">Tutorials</a></li>
                         </ul> -->
                     </section>
                 </nav>
@@ -105,91 +122,9 @@ weight_scale scales the range of values that input-to-hidden weights can take.</
 <p>I am currently running ELM on the Covertype dataset (link). The results, however, aren't yet promising as ELM achieved a poor performance of 17% error-rate with as many as 1000 hidden neurons. The training error is still high, which means higher number of hidden neurons will likely reduce the error-rate. But even with 2000 hidden neurons, the error-rate was only reduced to 16,8%. The reason is,  Covertype has 54 features, so a much larger representation (produced by the hidden neurons) of the dataset is not adding any significant information. Therefore, I will explore other parameters using grid search in the hopes to significantly reduce that error-rate.</p>    
         </section>
 <!--         <section >
-                <style>
-#pcs-comment-form input,
-#pcs-comment-form textarea {
-    width: 100%;
-}
-#pcs-comment-form-display-replyto {
-    border: solid 1px black;
-    padding: 2px;
-}
-#pcs-comment-form-display-replyto p {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-}
-#pcs-comments ul {
-    list-style: none;
-}
-#pcs-comments .comment-left {
-    display: table-cell;
-    padding-right: 10px;
-}
-#pcs-comments .comment-body {
-    display: table-cell;
-    vertical-align: top;
-    width: 100%;
-}
-</style>
-
-    <section id="pcs-comments">
-    <header>
-        <h2>Comments</h2>
-        <hr/>
-    </header>
-        <p>There are no comments yet.</p>
-    <section>
-    <form id="pcs-comment-form" action="#">
-        <legend>Add a Comment</legend>
-        <input type="hidden" id="pcs-comment-form-input-replyto">
-        <fieldset>
-            <label for="pcs-comment-form-input-name">Name</label>
-            <input  id="pcs-comment-form-input-name" type="text" placeholder="Enter your name or nickname" />
-        </fieldset>
-        <fieldset>
-            <label for="pcs-comment-form-input-website">Website</label>
-            <input  id="pcs-comment-form-input-website" type="text" placeholder="Enter your website (optional)" />
-        </fieldset>
-        <fieldset>
-            <label   for="pcs-comment-form-input-textarea">Your Comment</label>
-            <textarea id="pcs-comment-form-input-textarea" rows="5" style="resize:vertical;" placeholder="Your comment"></textarea>
-            <p>You can use the <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> syntax to format your comment.</p>
-            <div style="display: none; " id="pcs-comment-form-display-replyto"></div>
-        </fieldset>
-
-        <button type="submit"
-                id="pcs-comment-form-button-submit"
-                >Post</button>
-
-    </form>
-</section>
-
-</section>
-
-            <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="./theme/js/comments.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            CommentSystem.email_user   = "issam.laradji";
-            CommentSystem.email_domain = "gmail.com";
-            CommentSystem.display_replyto_html = function(comment_content, article_slug, author) { 
-                return ''
-                    + '<button style="float:right;" onclick="CommentSystem.cancelReply(); return false;" title="Cancel the reply">'
-                    +   '×'
-                    + '</button>'
-                    + '<p>This comment will be posted as a reply to \'<a title="'+comment_content+'" href="#comment-'+article_slug+'">'+author+'</a>\'</p>';
-            };
-
-            $('#pcs-comment-form').on("submit",
-                function( event )
-                {
-                    event.preventDefault();
-                    $(location).attr('href', CommentSystem.getMailtoLink("week-9-progress-report-for-the-scikit-learn-module"));
-                }
-            );
-        });
-    </script>
-
+                
+    
+    
 
         </section> -->
         <hr>

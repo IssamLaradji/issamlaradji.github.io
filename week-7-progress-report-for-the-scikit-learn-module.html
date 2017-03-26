@@ -1,6 +1,19 @@
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      "HTML-CSS": {
+      styles: {
+      ".MathJax .mo, .MathJax .mi": {color: "black ! important"}}
+      },
+      tex2jax: {inlineMath: [['$','$'], ['\\\\(','\\\\)']],processEscapes: true}
+      });
+    </script>
+
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
         <link rel="shortcut icon" href="" />
 
         <meta charset="utf-8" />
@@ -14,11 +27,16 @@
 &lt;p&gt;3) Kernels for ELMs; and&lt;/p&gt;
 &lt;p&gt;4) Relevant …&lt;/p&gt;" />
 
+<!--  -->
+
+
         <!--[if !IE 7]>
         <style type="text/css">
             #main-content {display:table;height:100%}
         </style>
         <![endif]-->
+        <link rel="stylesheet" href="./theme/css/ipython.min.css" />
+        
         <link rel="stylesheet" href="./theme/css/backdrop.css" />
         <link rel="stylesheet" href="./theme/css/pygments.css" />
         <script src="./theme/js/modernizr.js"></script>
@@ -44,7 +62,7 @@
             <div class="main-content">
             <div class="row title-bar issami" style="margin-bottom: 2rem;">
     <div class="small-12 columns">
-        <h1><a href=".">Issam Laradji</a></h1><h2> <small></small></h2>
+        <h1><a href=".">Data Analytics</a></h1><h2> <small></small></h2>
     </div>
 </div>
 
@@ -60,17 +78,16 @@
                         <ul class="left">
 <!--                                                             <a href="index.html">Home</a>
                               <a href="https://github.com/IssamLaradji">Github</a>
-                              <a href="pdfs/cv.pdf">CV</a>
  -->
                             <li ><a style="
                                 font-size: x-large;" href="index.html">Home</a></li>
                             <li ><a style="
                                 font-size: x-large;" href="https://github.com/IssamLaradji">Github</a></li>
-                            <li ><a style="
-                                font-size: x-large;" href="pdfs/cv.pdf">CV</a></li>
                         </ul>
 <!--                         <ul class="right">
                             <li class="active"><a href="./category/gsoc-2014.html">GSoC 2014</a></li>
+                            <li><a href="./category/machine-learning.html">Machine Learning</a></li>
+                            <li><a href="./category/tutorials.html">Tutorials</a></li>
                         </ul> -->
                     </section>
                 </nav>
@@ -99,107 +116,82 @@
 <p>4) Relevant test cases and examples.</p>
 <p>I will explain the implementations in more detail below.</p>
 <p>1) Regularized and Weighted ELMs</p>
-<p>Assuming H is the hidden activations, $\beta$ is the hidden layer outgoing weights, and y is the target vector; regularized ELMs solves the following equation,</p>
-<p>$\beta = (HH' + I/C)'Hy$
+<p>Assuming H is the hidden activations, <span class="math">\(\beta\)</span> is the hidden layer outgoing weights, and y is the target vector; regularized ELMs solves the following equation,</p>
+<p><span class="math">\(\beta = (HH' + I/C)'Hy\)</span>
 where I is the identity matrix.</p>
 <p>The regularization term C determines the decision boundary degree of linearity. Figure 1 shows how regularization - or reducing C - leads to a linear function.</p>
 <p><img alt="non-regularized (left side) vs. regularized (right side) decision boundary" src="images/week7_1.PNG"></p>
-<p>Weighted ELMs is different from regularized ELMs, in that a diagonal weight matrix $W$ is added to the equation, yielding the following,</p>
-<p>$\beta = (HWH' + I/C)'HWy$</p>
-<p>Index $(i, i)$ in $W$ corresponds to how much weight is given to sample $i$, depending on the sample's class. This scheme is used to address the problem with imbalanced datasets; where a class is underrepresented by having few samples compared to other classes and therefore ignored by classifiers. Such minority classes are given higher weights such that the decision boundary is pushed away from them. Figure 2 shows the difference between applying weighting schemes for the minority class, the orange samples.</p>
+<p>Weighted ELMs is different from regularized ELMs, in that a diagonal weight matrix <span class="math">\(W\)</span> is added to the equation, yielding the following,</p>
+<p><span class="math">\(\beta = (HWH' + I/C)'HWy\)</span></p>
+<p>Index <span class="math">\((i, i)\)</span> in <span class="math">\(W\)</span> corresponds to how much weight is given to sample <span class="math">\(i\)</span>, depending on the sample's class. This scheme is used to address the problem with imbalanced datasets; where a class is underrepresented by having few samples compared to other classes and therefore ignored by classifiers. Such minority classes are given higher weights such that the decision boundary is pushed away from them. Figure 2 shows the difference between applying weighting schemes for the minority class, the orange samples.</p>
 <p><img alt="no weights (left side); 0.618/(#samples) weight given to each class (middle side); 1000 weight cost given to the orange class (right side))" src="images/week7_2.png"></p>
 <p>2) Sequential ELMs</p>
 <p>Dealing with million sample datasets is problematic when they have to be in memory all at once for training. Sequential ELMs mitigates this limitation by breaking the dataset into batches and trains on them by per-batch basis using a recursive equation which is but a subtle representation of ELM's original equation. Unfortunately the implementation does not support weights yet.</p>
 <p>3) Kernels for ELMs
 The standard initialization of ELM input weights is the result of a random kernel. However, other kernels, which are best known for training SVMs, can be used to get new hidden activations - like Radial Basis Function, Linear kernel, and the Polynomial kernel.</p>
-<p>For the remaining time of GSoC 2014, I will complete the ELMs documentation and add any necessary changes for the completed work.</p>    
+<p>For the remaining time of GSoC 2014, I will complete the ELMs documentation and add any necessary changes for the completed work.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>    
         </section>
 <!--         <section >
-                <style>
-#pcs-comment-form input,
-#pcs-comment-form textarea {
-    width: 100%;
-}
-#pcs-comment-form-display-replyto {
-    border: solid 1px black;
-    padding: 2px;
-}
-#pcs-comment-form-display-replyto p {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-}
-#pcs-comments ul {
-    list-style: none;
-}
-#pcs-comments .comment-left {
-    display: table-cell;
-    padding-right: 10px;
-}
-#pcs-comments .comment-body {
-    display: table-cell;
-    vertical-align: top;
-    width: 100%;
-}
-</style>
-
-    <section id="pcs-comments">
-    <header>
-        <h2>Comments</h2>
-        <hr/>
-    </header>
-        <p>There are no comments yet.</p>
-    <section>
-    <form id="pcs-comment-form" action="#">
-        <legend>Add a Comment</legend>
-        <input type="hidden" id="pcs-comment-form-input-replyto">
-        <fieldset>
-            <label for="pcs-comment-form-input-name">Name</label>
-            <input  id="pcs-comment-form-input-name" type="text" placeholder="Enter your name or nickname" />
-        </fieldset>
-        <fieldset>
-            <label for="pcs-comment-form-input-website">Website</label>
-            <input  id="pcs-comment-form-input-website" type="text" placeholder="Enter your website (optional)" />
-        </fieldset>
-        <fieldset>
-            <label   for="pcs-comment-form-input-textarea">Your Comment</label>
-            <textarea id="pcs-comment-form-input-textarea" rows="5" style="resize:vertical;" placeholder="Your comment"></textarea>
-            <p>You can use the <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> syntax to format your comment.</p>
-            <div style="display: none; " id="pcs-comment-form-display-replyto"></div>
-        </fieldset>
-
-        <button type="submit"
-                id="pcs-comment-form-button-submit"
-                >Post</button>
-
-    </form>
-</section>
-
-</section>
-
-            <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="./theme/js/comments.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            CommentSystem.email_user   = "issam.laradji";
-            CommentSystem.email_domain = "gmail.com";
-            CommentSystem.display_replyto_html = function(comment_content, article_slug, author) { 
-                return ''
-                    + '<button style="float:right;" onclick="CommentSystem.cancelReply(); return false;" title="Cancel the reply">'
-                    +   '×'
-                    + '</button>'
-                    + '<p>This comment will be posted as a reply to \'<a title="'+comment_content+'" href="#comment-'+article_slug+'">'+author+'</a>\'</p>';
-            };
-
-            $('#pcs-comment-form').on("submit",
-                function( event )
-                {
-                    event.preventDefault();
-                    $(location).attr('href', CommentSystem.getMailtoLink("week-7-progress-report-for-the-scikit-learn-module"));
-                }
-            );
-        });
-    </script>
-
+                
+    
+    
 
         </section> -->
         <hr>
