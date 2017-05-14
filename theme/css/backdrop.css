@@ -6479,7 +6479,7 @@ p {
 
 /* Default header styles */
 h1, h2, h3, h4, h5, h6 {
-  font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: normal;
   font-style: normal;
   color: #222222;
@@ -7571,7 +7571,7 @@ footer {
           margin-right: auto; } }
 
 .title-bar h1 {
-  font-size: 2.75rem;
+  font-size: 1.95rem;
   display: inline-block;
   margin-right: 1.25rem;
   margin-bottom: 0; 
