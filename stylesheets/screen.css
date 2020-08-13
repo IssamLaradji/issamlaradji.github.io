@@ -847,7 +847,7 @@ ISOTOPE
 /* line 613, ../sass/screen.scss */
 .element-item .titles {
   position: relative;
-  text-align: center;
+  text-align: left;
   display: -webkit-flex;
   display: block;
   -webkit-flex-direction: row;
