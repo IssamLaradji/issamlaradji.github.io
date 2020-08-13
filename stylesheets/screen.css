@@ -288,7 +288,7 @@ header {
 }
 /* line 219, ../sass/screen.scss */
 header .logo svg {
-  width: 85px;
+  width: 185px;
   height: 80px;
   margin-top: -5px;
   float: left;
@@ -809,8 +809,8 @@ ISOTOPE
 @media screen and (min-width: 670px) {
   /* line 576, ../sass/screen.scss */
   .element-item {
-    width: 156px;
-    height: 227px;
+    width: 500px;
+    height: 400px;
     margin: 0 30px 30px 0;
   }
 }
@@ -821,7 +821,7 @@ ISOTOPE
   }
 }
 /* line 606, ../sass/screen.scss */
-.element-item a {
+/* .element-item a {
   display: block;
   overflow: auto;
   position: absolute;
@@ -830,8 +830,8 @@ ISOTOPE
   left: 0;
   right: 0;
   bottom: 0;
-  top: 0;
-}
+  top: 30;
+} */
 /* line 609, ../sass/screen.scss */
 .element-item img {
   width: 100%;
@@ -846,10 +846,10 @@ ISOTOPE
 }
 /* line 613, ../sass/screen.scss */
 .element-item .titles {
-  position: absolute;
+  position: relative;
   text-align: center;
   display: -webkit-flex;
-  display: flex;
+  display: block;
   -webkit-flex-direction: row;
   /* works with row or column */
   flex-direction: row;
@@ -871,31 +871,35 @@ ISOTOPE
   		transition: transform 150ms ease-out; 
   		transform: perspective(150px) rotateX(0deg) rotateY(0deg);
   */
-  -webkit-transition: -webkit-transform 150ms ease-out;
+  /* -webkit-transition: -webkit-transform 150ms ease-out;
   transition: transform 150ms ease-out;
   -webkit-transform: perspective(150px) rotateX(0deg) rotateY(0deg);
-  transform: perspective(150px) rotateX(0deg) rotateY(0deg);
-  top: 0;
+  transform: perspective(150px) rotateX(0deg) rotateY(0deg); */
+
+
+  position: relative;
+  z-index: 10000;
   left: 0;
   right: 0;
   bottom: 0;
+  top: 3000;
 }
 
 /* line 657, ../sass/screen.scss */
-html:not(.touch) .grid .element-item.illustration a:hover .titles {
+/* html:not(.touch) .grid .element-item.illustration a:hover .titles {
   -webkit-transition: -webkit-transform 150ms ease-out;
   transition: transform 150ms ease-out;
   -webkit-transform: perspective(250px) rotateX(90deg) rotateY(0deg);
   transform: perspective(250px) rotateX(90deg) rotateY(0deg);
-}
+} */
 
 /* line 664, ../sass/screen.scss */
-html:not(.touch) .grid .element-item.design a:hover .titles {
+/* html:not(.touch) .grid .element-item.design a:hover .titles {
   -webkit-transition: -webkit-transform 150ms ease-out;
   transition: transform 150ms ease-out;
   -webkit-transform: perspective(150px) rotateX(0deg) rotateY(90deg);
   transform: perspective(150px) rotateX(0deg) rotateY(90deg);
-}
+} */
 
 /* line 674, ../sass/screen.scss */
 .grid .element-item.design .titles {
