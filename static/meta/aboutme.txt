@@ -1,0 +1,5 @@
+Issam Laradji is a research scientist at ServiceNow Research, where he works on reducing the amount of 
+labeling needed to train machine learning models. He did his postdoc at McGill’s Graphics Lab 
+and earned his PhD from the University of British Columbia’s Machine Learning Lab. 
+His interests include natural language processing, computer vision (2D and 3D), and optimization. 
+Issam also runs the Vancouver AI Academy, a community focused on AI learning and development.

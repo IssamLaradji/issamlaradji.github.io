@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issam's AI Research Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+            background-image: url('static/assets/background.webp');
+            color: #e0e0e0;
+        }
+
+        .header {
+            width: 100%;
+            height: 250px;
+            position: relative;
+            background: rgba(0, 0, 0, 0.7);
+            border-bottom: 2px solid #4CAF50;
+        }
+
+        .profile-info {
+            position: absolute;
+            bottom: 50px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+        }
+
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #4CAF50;
+        }
+
+        .profile-details h1 {
+            margin: 0;
+            font-size: 28px;
+            color: #4CAF50;
+        }
+
+        .profile-details p {
+            margin: 0;
+            color: #ccc;
+        }
+
+        .content {
+            display: flex;
+            margin-top: 0px;
+            padding: 20px;
+        }
+
+        .sidebar {
+            width: 20%;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+        }
+
+        .sidebar h2 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+
+        .sidebar p {
+            margin: 0;
+            color: #ccc;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            width: 75%;
+            margin-left: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+            height: 35rem;
+        }
+
+        .main-content h2 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .tab-content {
+            max-height: 60vh; /* Adjust this value as needed */
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .tabs button {
+            background: rgba(0, 0, 0, 0.8);
+            border: none;
+            color: #4CAF50;
+            padding: 10px 20px;
+            cursor: pointer;
+            width: 15rem;
+            font-size: 1.0rem;
+            border-radius: 10px;
+            margin-right: 10px;
+            transition: background 0.3s;
+        }
+
+        .tabs button.active {
+            background: #4CAF50;
+            color: #000;
+        }
+
+        .tabs button:hover {
+            background: rgba(0, 255, 0, 0.2);
+        }
+
+        .project-card {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: rgba(0, 0, 0, 0.85);
+            width: 100%;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+            text-align: left;
+            color: #ddd;
+            margin-bottom: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 25px rgba(0, 255, 0, 0.7);
+        }
+
+        .card img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .card h3 {
+            margin: 10px 0;
+            font-size: 20px;
+            color: #4CAF50;
+        }
+
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background: #fff;
+            color: #000;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 80%;
+            max-height: 80%;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 0 25px rgba(0, 255, 0, 0.7);
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #000;
+        }
+
+        .quiz {
+            margin-top: 20px;
+        }
+
+        .quiz h3 {
+            color: #4CAF50;
+        }
+
+        .quiz .question {
+            margin-bottom: 10px;
+        }
+
+        .quiz input[type="radio"] {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="profile-info">
+            <img src="static/assets/profile.jpg" alt="Profile Image" class="profile-image">
+            <div class="profile-details">
+                <h1>Issam's AI Research Nest</h1>
+                <p>Research Scientist | Data Scientist | Machine Learning Enthusiast</p>
+                <p>Location: Research Lab, Earth</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="sidebar">
+        </div>
+
+        <div class="main-content">
+            <h2>Research Portfolio</h2>
+            <div class="tabs">
+                <button class="tab-button active" data-tab="posts">Publications</button>
+                <button class="tab-button" data-tab="tools">Research Tools</button>
+                <button class="tab-button" data-tab="rituals">Experiments</button>
+                <button class="tab-button" data-tab="readings">Readings</button>
+                <button class="tab-button" data-tab="quiz">Test Your Knowledge</button>
+                <button class="tab-button" data-tab="about">About Me</button>
+            </div>
+           
+            <div class="tab-content" id="posts">
+                <div class="project-card">
+                    <!-- Publications content here -->
+                </div>
+            </div>
+            <div class="tab-content" id="tools" style="display:none;">
+                <div class="project-card">
+                    <div class="card">
+                        <h3>Research Tool 1</h3>
+                        <p>A brief description of Research Tool 1.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Research Tool 2</h3>
+                        <p>A brief description of Research Tool 2.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="rituals" style="display:none;">
+                <div class="project-card">
+                    <!-- Experiments content here -->
+                </div>
+            </div>
+            <div class="tab-content" id="readings" style="display:none;">
+                <div class="project-card">
+                    <!-- Readings content here -->
+                </div>
+            </div>
+            <div class="tab-content" id="quiz" style="display:none;">
+                <h3>Test Your Knowledge</h3>
+                <div class="quiz">
+                    <div class="question">
+                        <p>1. What is the purpose of artificial intelligence?</p>
+                        <label><input type="radio" name="q1" value="a"> To mimic human intelligence</label><br>
+                        <label><input type="radio" name="q1" value="b"> To replace human jobs</label><br>
+                        <label><input type="radio" name="q1" value="c"> To create robots</label><br>
+                    </div>
+                    <!-- Add more questions as needed -->
+                </div>
+            </div>
+             <div class="tab-content" id="about" style="display:none;">
+               
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.style.display = 'none');
+
+                button.classList.add('active');
+                document.getElementById(button.dataset.tab).style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
