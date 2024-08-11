@@ -63,7 +63,7 @@
         }
 
         .sidebar {
-            width: 13%;
+            width: 15%;
             background: rgba(0, 0, 0, 0.7);
             padding: 20px;
             border-radius: 10px;
@@ -133,6 +133,13 @@
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
+            width:90%;
+        }
+        .interests-card {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+             width:90%;
         }
 
         .card {
@@ -234,15 +241,31 @@
         <div class="main-content">
             <h2>Research Portfolio</h2>
             <div class="tabs">
-                <button class="tab-button active" data-tab="posts">Publications</button>
-                <button class="tab-button" data-tab="tools">Research Tools</button>
-                <button class="tab-button" data-tab="rituals">Experiments</button>
-                <button class="tab-button" data-tab="readings">Readings</button>
+                <button class="tab-button active" data-tab="interests">Current Interests</button>
+                <button class="tab-button" data-tab="posts">Publications</button>
+                <button class="tab-button" data-tab="tools">Career Highlights</button>
+                <button class="tab-button" data-tab="rituals">Blog Posts</button>
+                <button class="tab-button" data-tab="readings">Github Projects</button>
                 <button class="tab-button" data-tab="quiz">Test Your Knowledge</button>
                 <button class="tab-button" data-tab="about">About Me</button>
             </div>
            
-            <div class="tab-content" id="posts">
+            <div class="tab-content" id="interests">
+                <div class="interests-card">
+                    <div class="card" id="interest-project-{i}">
+                    <h3>Foundational Data Analytics</h3> 
+                </div>
+                </div>
+                <div class="interests-card">
+                                <div class="card" id="interest-project-{i}">
+                    <h3>Foundational Vision-Language Models</h3> 
+                </div>
+
+
+                </div>
+            </div>
+
+            <div class="tab-content" id="posts" style="display:none;">
                 <div class="project-card">
                     <!-- Publications content here -->
                 </div>

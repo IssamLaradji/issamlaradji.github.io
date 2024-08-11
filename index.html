@@ -63,7 +63,7 @@
         }
 
         .sidebar {
-            width: 13%;
+            width: 15%;
             background: rgba(0, 0, 0, 0.7);
             padding: 20px;
             border-radius: 10px;
@@ -133,6 +133,13 @@
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
+            width:90%;
+        }
+        .interests-card {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+             width:90%;
         }
 
         .card {
@@ -274,14 +281,14 @@
 <h2>Contact</h2>
 <div class="icon-container">
     <div class="icon-row">
-        <div class="icon"><a href="https://discord.gg/{contact_info['discord']}" target="_blank"><i class="fab fa-discord"></i></a><p>Discord</p></div>
-        <div class="icon"><a href="mailto:{contact_info['email']}"><i class="fas fa-envelope"></i></a><p>Email</p></div>
-        <div class="icon"><a href="{contact_info['github']}" target="_blank"><i class="fab fa-github"></i></a><p>GitHub</p></div>
+        <div class="icon"><a href="https://discord.gg/https://discord.gg/5hbKKcAvW6" target="_blank"><i class="fab fa-discord"></i></a><p>Discord</p></div>
+        <div class="icon"><a href="mailto:issam.laradji@gmail.com"><i class="fas fa-envelope"></i></a><p>Email</p></div>
+        <div class="icon"><a href="https://github.com/IssamLaradji" target="_blank"><i class="fab fa-github"></i></a><p>GitHub</p></div>
     </div>
     <div class="icon-row">
-        <div class="icon"><a href="{contact_info['linkedin']}" target="_blank"><i class="fab fa-linkedin"></i></a><p>LinkedIn</p></div>
-        <div class="icon"><a href="{contact_info['twitter']}" target="_blank"><i class="fab fa-twitter"></i></a><p>Twitter</p></div>
-        <div class="icon"><a href="{contact_info['google_scholar']}" target="_blank"><i class="fas fa-book"></i></a><p>Scholar</p></div>
+        <div class="icon"><a href="https://www.linkedin.com/in/issam-laradji-67ba1a99/" target="_blank"><i class="fab fa-linkedin"></i></a><p>LinkedIn</p></div>
+        <div class="icon"><a href="https://x.com/ILaradji" target="_blank"><i class="fab fa-twitter"></i></a><p>Twitter</p></div>
+        <div class="icon"><a href="https://scholar.google.ca/citations?user=8vRS7F0AAAAJ&hl=en" target="_blank"><i class="fas fa-book"></i></a><p>Scholar</p></div>
     </div>
 </div>
 
@@ -290,15 +297,31 @@
         <div class="main-content">
             <h2>Research Portfolio</h2>
             <div class="tabs">
-                <button class="tab-button active" data-tab="posts">Publications</button>
-                <button class="tab-button" data-tab="tools">Research Tools</button>
-                <button class="tab-button" data-tab="rituals">Experiments</button>
-                <button class="tab-button" data-tab="readings">Readings</button>
+                <button class="tab-button active" data-tab="interests">Current Interests</button>
+                <button class="tab-button" data-tab="posts">Publications</button>
+                <button class="tab-button" data-tab="tools">Career Highlights</button>
+                <button class="tab-button" data-tab="rituals">Blog Posts</button>
+                <button class="tab-button" data-tab="readings">Github Projects</button>
                 <button class="tab-button" data-tab="quiz">Test Your Knowledge</button>
                 <button class="tab-button" data-tab="about">About Me</button>
             </div>
            
-            <div class="tab-content" id="posts">
+            <div class="tab-content" id="interests">
+                <div class="interests-card">
+                    <div class="card" id="interest-project-{i}">
+                    <h3>Foundational Data Analytics</h3> 
+                </div>
+                </div>
+                <div class="interests-card">
+                                <div class="card" id="interest-project-{i}">
+                    <h3>Foundational Vision-Language Models</h3> 
+                </div>
+
+
+                </div>
+            </div>
+
+            <div class="tab-content" id="posts" style="display:none;">
                 <div class="project-card">
 
     <div class="card" id="publication-project-1">

@@ -57,20 +57,20 @@ contact_info = {
 }
 
 # Create the sidebar HTML with clickable icons and names
-sidebar_html = '''
+sidebar_html = f'''
 <style>
-    .icon-container {
+    .icon-container {{
         display: flex;
         flex-wrap: wrap;
         gap: 20px;
         margin-bottom: 20px;
-    }
-    .icon-row {
+    }}
+    .icon-row {{
         display: flex;
         gap: 20px;
         margin-bottom: 30px;
-    }
-    .icon {
+    }}
+    .icon {{
         width: 60px;
         height: 60px;
         border-radius: 50%;
@@ -83,20 +83,20 @@ sidebar_html = '''
         box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         flex: 1;
         box-sizing: border-box;
-    }
-    .icon a {
+    }}
+    .icon a {{
         color: inherit;
         text-decoration: none;
-    }
-    .icon:hover {
+    }}
+    .icon:hover {{
         background-color: #007bff; /* Blue background for hover effect */
         color: #fff; /* White text color for better contrast */
-    }
-    .icon p {
+    }}
+    .icon p {{
         margin-top: -15px;
         padding: 0px 0;
         font-size: 12px;
-    }
+    }}
 </style>
 
 <h2>Contact</h2>
