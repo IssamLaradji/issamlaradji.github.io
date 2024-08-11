@@ -25,11 +25,8 @@ for i, publication in enumerate(publications, start=1):
     authors = publication.get('author', 'Unknown Authors')
     year = publication.get('year', 'Unknown Year')
     journal_or_conference = publication.get('journal', publication.get('booktitle', None))
-    if journal_or_conference is None:
-        journal_or_conference = publication.get("note")
+    journal_or_conference = journal_or_conference or publication.get("note") or "arXiv"
     if "arXiv" in str(journal_or_conference):
-        journal_or_conference = "arXiv"
-    if journal_or_conference is None:
         journal_or_conference = "arXiv"
         
     cards_html += f'''
@@ -50,39 +47,78 @@ def read_text_file(file_path):
         return file.read().strip()
 
 # Read meta files and fill the sidebar
-about_me = read_text_file(os.path.join(meta_dir_path, 'aboutme.txt'))
-discord = read_text_file(os.path.join(meta_dir_path, 'discord.txt'))
-email = read_text_file(os.path.join(meta_dir_path, 'email.txt'))
-github = read_text_file(os.path.join(meta_dir_path, 'github.txt'))
-linkedin = read_text_file(os.path.join(meta_dir_path, 'linkedin.txt'))
-twitter = read_text_file(os.path.join(meta_dir_path, 'twitter.txt'))
+contact_info = {
+    'discord': read_text_file(os.path.join(meta_dir_path, 'discord.txt')),
+    'email': read_text_file(os.path.join(meta_dir_path, 'email.txt')),
+    'github': read_text_file(os.path.join(meta_dir_path, 'github.txt')),
+    'linkedin': read_text_file(os.path.join(meta_dir_path, 'linkedin.txt')),
+    'twitter': read_text_file(os.path.join(meta_dir_path, 'twitter.txt')),
+    'google_scholar': read_text_file(os.path.join(meta_dir_path, 'google_scholar.txt'))
+}
 
 # Create the sidebar HTML with clickable icons and names
-sidebar_html = f'''
+sidebar_html = '''
 <style>
-    .sidebar a {{
-        color: white;
-        text-decoration: none;
-        font-size: 16px;
+    .icon-container {
         display: flex;
-        align-items: center;
-    }}
-    .sidebar a i {{
-        margin-right: 8px;
-    }}
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+    .icon-row {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+    .icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #f4f4f4;
+        color: #333;
+        font-size: 28px;
+        line-height: 60px;
+        text-align: center;
+        transition: background-color 0.3s, color 0.3s;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        flex: 1;
+        box-sizing: border-box;
+    }
+    .icon a {
+        color: inherit;
+        text-decoration: none;
+    }
+    .icon:hover {
+        background-color: #007bff; /* Blue background for hover effect */
+        color: #fff; /* White text color for better contrast */
+    }
+    .icon p {
+        margin-top: -15px;
+        padding: 0px 0;
+        font-size: 12px;
+    }
 </style>
+
 <h2>Contact</h2>
-<p><a href="https://discord.gg/{discord}" target="_blank"><i class="fab fa-discord"></i> Discord</a></p>
-<p><a href="mailto:{email}"><i class="fas fa-envelope"></i> Email</a></p>
-<p><a href="{github}" target="_blank"><i class="fab fa-github"></i> GitHub</a></p>
-<p><a href="{linkedin}" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></p>
-<p><a href="{twitter}" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></p>
+<div class="icon-container">
+    <div class="icon-row">
+        <div class="icon"><a href="https://discord.gg/{contact_info['discord']}" target="_blank"><i class="fab fa-discord"></i></a><p>Discord</p></div>
+        <div class="icon"><a href="mailto:{contact_info['email']}"><i class="fas fa-envelope"></i></a><p>Email</p></div>
+        <div class="icon"><a href="{contact_info['github']}" target="_blank"><i class="fab fa-github"></i></a><p>GitHub</p></div>
+    </div>
+    <div class="icon-row">
+        <div class="icon"><a href="{contact_info['linkedin']}" target="_blank"><i class="fab fa-linkedin"></i></a><p>LinkedIn</p></div>
+        <div class="icon"><a href="{contact_info['twitter']}" target="_blank"><i class="fab fa-twitter"></i></a><p>Twitter</p></div>
+        <div class="icon"><a href="{contact_info['google_scholar']}" target="_blank"><i class="fas fa-book"></i></a><p>Scholar</p></div>
+    </div>
+</div>
 '''
 
 # Replace the sidebar placeholder with the actual sidebar HTML
 html_output = html_output.replace('<div class="sidebar">', f'<div class="sidebar">\n{sidebar_html}')
 
 # Replace the placeholder in the about tab with the actual about me content
+about_me = read_text_file(os.path.join(meta_dir_path, 'aboutme.txt'))
 html_output = html_output.replace(
     '<div class="tab-content" id="about" style="display:none;">',
     f'<div class="tab-content" id="about" style="display:none;">\n<h3>About Me</h3>\n<p>{about_me}</p>'
