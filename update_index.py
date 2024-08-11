@@ -99,14 +99,13 @@ sidebar_html = f'''
     }}
 </style>
 
-<h2>Contact</h2>
+
 <div class="icon-container">
     <div class="icon-row">
         <div class="icon"><a href="https://discord.gg/{contact_info['discord']}" target="_blank"><i class="fab fa-discord"></i></a><p>Discord</p></div>
         <div class="icon"><a href="mailto:{contact_info['email']}"><i class="fas fa-envelope"></i></a><p>Email</p></div>
         <div class="icon"><a href="{contact_info['github']}" target="_blank"><i class="fab fa-github"></i></a><p>GitHub</p></div>
-    </div>
-    <div class="icon-row">
+
         <div class="icon"><a href="{contact_info['linkedin']}" target="_blank"><i class="fab fa-linkedin"></i></a><p>LinkedIn</p></div>
         <div class="icon"><a href="{contact_info['twitter']}" target="_blank"><i class="fab fa-twitter"></i></a><p>Twitter</p></div>
         <div class="icon"><a href="{contact_info['google_scholar']}" target="_blank"><i class="fas fa-book"></i></a><p>Scholar</p></div>

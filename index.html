@@ -18,25 +18,26 @@
         }
 
         .header {
-            width: 100%;
-            height: 250px;
-            position: relative;
-            background: rgba(0, 0, 0, 0.7);
-            border-bottom: 2px solid #4CAF50;
-        }
+    width: 100%;
+    height: 250px;
+    position: relative;
+    background: rgba(0, 0, 0, 0.7);
+    border-bottom: 2px solid #4CAF50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        .profile-info {
-            position: absolute;
-            bottom: 50px;
-            left: 20px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
-        }
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+    width: 80%;
+}
 
         .profile-image {
             width: 100px;
@@ -56,18 +57,21 @@
             color: #ccc;
         }
 
-        .content {
-            display: flex;
-            margin-top: 0px;
-            padding: 20px;
-        }
+         .content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 20px;
+    padding: 20px;
+    width: 100%;
+}
 
         .sidebar {
             width: 15%;
-            background: rgba(0, 0, 0, 0.7);
+            /* background: rgba(0, 0, 0, 0.7); */
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+            /* border-radius: 10px; */
+            /* box-shadow: 0 0 15px rgba(0, 255, 0, 0.5); */
         }
 
         .sidebar h2 {
@@ -80,16 +84,18 @@
             color: #ccc;
         }
 
-        .main-content {
-            flex-grow: 1;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            width: 75%;
-            margin-left: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
-            height: 35rem;
-        }
+       
+
+.main-content {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+    height: 35rem;
+    width: 95%; /* Adjust width as needed */
+    max-width: 1200px; /* Optional: set a max width for larger screens */
+    margin-left: -30px; 
+}
 
         .main-content h2 {
             margin-top: 0;
@@ -231,11 +237,7 @@
                 <p>Research Scientist | Data Scientist | Machine Learning Enthusiast</p>
                 <p>Location: Research Lab, Earth</p>
             </div>
-        </div>
-    </div>
-
-    <div class="content">
-        <div class="sidebar">
+            <div class="sidebar">
 
 <style>
     .icon-container {
@@ -278,14 +280,13 @@
     }
 </style>
 
-<h2>Contact</h2>
+
 <div class="icon-container">
     <div class="icon-row">
         <div class="icon"><a href="https://discord.gg/https://discord.gg/5hbKKcAvW6" target="_blank"><i class="fab fa-discord"></i></a><p>Discord</p></div>
         <div class="icon"><a href="mailto:issam.laradji@gmail.com"><i class="fas fa-envelope"></i></a><p>Email</p></div>
         <div class="icon"><a href="https://github.com/IssamLaradji" target="_blank"><i class="fab fa-github"></i></a><p>GitHub</p></div>
-    </div>
-    <div class="icon-row">
+
         <div class="icon"><a href="https://www.linkedin.com/in/issam-laradji-67ba1a99/" target="_blank"><i class="fab fa-linkedin"></i></a><p>LinkedIn</p></div>
         <div class="icon"><a href="https://x.com/ILaradji" target="_blank"><i class="fab fa-twitter"></i></a><p>Twitter</p></div>
         <div class="icon"><a href="https://scholar.google.ca/citations?user=8vRS7F0AAAAJ&hl=en" target="_blank"><i class="fas fa-book"></i></a><p>Scholar</p></div>
@@ -293,6 +294,12 @@
 </div>
 
         </div>
+        </div>
+
+        
+    </div>
+
+    <div class="content">
 
         <div class="main-content">
             <h2>Research Portfolio</h2>
