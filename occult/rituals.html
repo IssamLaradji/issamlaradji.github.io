@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rituals | Elara Moonshadow</title>
+    <style>
+        :root {
+            --dark-bg: #0a0a0a;
+            --text-color: #ffffff;
+            --accent-color: #9370DB; /* Purple accent color */
+            --card-bg: #1a1a1a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Navigation */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            position: relative;
+        }
+        
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--text-color);
+        }
+        
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        /* Page Title */
+        .page-title {
+            text-align: center;
+            padding: 60px 0 20px;
+        }
+        
+        .page-title h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .page-description {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            opacity: 0.8;
+            font-size: 1.1rem;
+        }
+        
+        /* Filter Tabs */
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 40px 0;
+        }
+        
+        .filter-tab {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--text-color);
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-tab:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .filter-tab.active {
+            background-color: var(--accent-color);
+        }
+        
+        /* Ritual Cards */
+        .ritual-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .ritual-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .ritual-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .ritual-image {
+            height: 200px;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .ritual-content {
+            padding: 20px;
+        }
+        
+        .ritual-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .ritual-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .ritual-meta span {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .ritual-description {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        .learn-more {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            border: none;
+            padding: 10px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .learn-more:hover {
+            opacity: 0.9;
+        }
+        
+        /* Stars background effect */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: var(--text-color);
+            opacity: 0.7;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .footer-section ul li a:hover {
+            opacity: 1;
+        }
+        
+        .newsletter input {
+            width: 100%;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 5px;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+        
+        .newsletter button {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Stars background -->
+    <div class="stars" id="stars"></div>
+    
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">ELARA MOONSHADOW</div>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="rituals.html" class="active">Rituals</a>
+                    <a href="#">Tools</a>
+                    <a href="#">Courses</a>
+                    <a href="#">Blog</a>
+                </div>
+                <button class="theme-toggle">
+                    <i class="fas fa-moon">🌙</i>
+                </button>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="page-title">
+            <div class="container">
+                <h1>My Ritual Services</h1>
+                <p class="page-description">
+                    Personalized ceremonies and practices I offer to help you connect with cosmic
+                    energies and manifest your intentions.
+                </p>
+            </div>
+        </section>
+        
+        <section class="filter-section">
+            <div class="container">
+                <div class="filter-tabs">
+                    <button class="filter-tab active">
+                        <span>🌙</span> Lunar
+                    </button>
+                    <button class="filter-tab">
+                        <span>☀️</span> Solar
+                    </button>
+                    <button class="filter-tab">
+                        <span>✨</span> Celestial
+                    </button>
+                    <button class="filter-tab">
+                        <span>🔥</span> Elemental
+                    </button>
+                    <button class="filter-tab">
+                        <span>🍂</span> Seasonal
+                    </button>
+                </div>
+                
+                <div class="ritual-cards">
+                    <!-- Ritual Card 1 -->
+                    <div class="ritual-card">
+                        <div class="ritual-image">
+                            <!-- Placeholder for image -->
+                        </div>
+                        <div class="ritual-content">
+                            <h3 class="ritual-title">New Moon Manifestation</h3>
+                            <div class="ritual-meta">
+                                <span><small>Beginner</small></span>
+                                <span><small>30 minutes</small></span>
+                            </div>
+                            <p class="ritual-description">
+                                Set intentions and plant the seeds of your desires during
+                                the new moon phase.
+                            </p>
+                            <button class="learn-more">
+                                <span>✨</span> Learn More
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Ritual Card 2 -->
+                    <div class="ritual-card">
+                        <div class="ritual-image">
+                            <!-- Placeholder for image -->
+                        </div>
+                        <div class="ritual-content">
+                            <h3 class="ritual-title">Full Moon Release</h3>
+                            <div class="ritual-meta">
+                                <span><small>Beginner</small></span>
+                                <span><small>45 minutes</small></span>
+                            </div>
+                            <p class="ritual-description">
+                                Let go of what no longer serves you and cleanse your
+                                energy during the full moon.
+                            </p>
+                            <button class="learn-more">
+                                <span>✨</span> Learn More
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Ritual Card 3 -->
+                    <div class="ritual-card">
+                        <div class="ritual-image">
+                            <!-- Placeholder for image -->
+                        </div>
+                        <div class="ritual-content">
+                            <h3 class="ritual-title">Waning Moon Banishing</h3>
+                            <div class="ritual-meta">
+                                <span><small>Intermediate</small></span>
+                                <span><small>60 minutes</small></span>
+                            </div>
+                            <p class="ritual-description">
+                                Remove negative energies and obstacles as the moon's
+                                light diminishes.
+                            </p>
+                            <button class="learn-more">
+                                <span>✨</span> Learn More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>✨ Elara Moonshadow</h3>
+                    <p>Mystic practitioner, occult researcher, and spiritual guide sharing my journey through the hidden realms.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="rituals.html">Rituals</a></li>
+                        <li><a href="#">Tools</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Recommended Books</a></li>
+                        <li><a href="#">Glossary</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to receive updates on new content, events, and mystical insights.</p>
+                    <div class="newsletter">
+                        <input type="email" placeholder="Your email">
+                        <button>Subscribe</button>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">📷</a>
+                        <a href="#" class="social-icon">🐦</a>
+                        <a href="#" class="social-icon">📘</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Create stars background effect
+        function createStars() {
+            const stars = document.getElementById('stars');
+            const count = 100;
+            
+            for (let i = 0; i < count; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Random position
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                
+                // Random size
+                const size = Math.random() * 3;
+                
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                // Random opacity
+                star.style.opacity = Math.random() * 0.5 + 0.1;
+                
+                stars.appendChild(star);
+            }
+        }
+        
+        // Call the function when the page loads
+        window.addEventListener('load', createStars);
+        
+        // Add event listeners to ritual cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const learnMoreButtons = document.querySelectorAll('.learn-more');
+            
+            learnMoreButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const ritualTitle = this.closest('.ritual-card').querySelector('.ritual-title').textContent;
+                    
+                    // Redirect to the ritual detail page with the title as a parameter
+                    if (ritualTitle === "New Moon Manifestation") {
+                        window.location.href = "new-moon-manifestation.html";
+                    } else if (ritualTitle === "Full Moon Release") {
+                        window.location.href = "full-moon-release.html";
+                    } else if (ritualTitle === "Waning Moon Banishing") {
+                        window.location.href = "waning-moon-banishing.html";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

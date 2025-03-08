@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Moon Manifestation | Elara Moonshadow</title>
+    <style>
+        :root {
+            --dark-bg: #0a0a0a;
+            --text-color: #ffffff;
+            --accent-color: #9370DB; /* Purple accent color */
+            --card-bg: #1a1a1a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px; /* Add padding for small screens */
+        }
+        
+        /* Navigation */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 10px; /* Add space when nav wraps */
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px; /* Reduced from 30px for better mobile fit */
+            flex-wrap: wrap; /* Allow links to wrap on very small screens */
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            position: relative;
+            padding: 5px 0; /* Add padding for better touch targets */
+        }
+        
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--text-color);
+        }
+        
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 8px; /* Larger touch target */
+        }
+        
+        /* Mobile menu button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        /* Ritual Content */
+        .ritual-title {
+            font-size: 2.5rem;
+            margin: 30px 0;
+            text-align: center;
+            word-wrap: break-word; /* Prevent overflow on small screens */
+        }
+        
+        .ritual-image {
+            width: 100%;
+            max-width: 800px;
+            height: 300px;
+            background-color: #333;
+            border-radius: 10px;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .ritual-content {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .ritual-main {
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        /* Card System */
+        .ritual-cards {
+            width: 100%;
+            position: relative;
+        }
+        
+        .ritual-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .ritual-card.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Materials Needed */
+        .materials-needed {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .material-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            flex-wrap: wrap; /* Allow wrapping on very small screens */
+        }
+        
+        /* How to Perform */
+        .step-container {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .step-content {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+        }
+        
+        .step-image {
+            width: 150px;
+            height: 150px;
+            background-color: #333;
+            border-radius: 5px;
+            flex-shrink: 0;
+            margin: 0 auto; /* Center when wrapped */
+        }
+        
+        .step-instructions {
+            flex: 1;
+            min-width: 200px; /* Ensure readable width */
+        }
+        
+        /* Navigation buttons */
+        .card-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+        }
+        
+        .card-nav-button {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            width: auto; /* Allow buttons to size naturally */
+            min-width: 120px; /* Minimum width for touch targets */
+            text-align: center;
+        }
+        
+        /* Progress indicator */
+        .progress-indicator {
+            display: flex;
+            gap: 10px;
+            margin: 0;
+            justify-content: center;
+            flex: 1;
+            flex-wrap: wrap; /* Allow wrapping on very small screens */
+            padding: 10px 0; /* Add padding for better touch */
+        }
+        
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            transition: background-color 0.3s ease;
+        }
+        
+        /* Step navigation */
+        .step-navigation-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+            gap: 10px; /* Add gap when wrapped */
+        }
+        
+        .step-next-button, 
+        .step-complete-button,
+        .step-back-button {
+            padding: 12px 18px; /* Larger touch targets */
+            min-width: 120px; /* Minimum width for touch */
+            text-align: center;
+        }
+        
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            .ritual-content {
+                flex-direction: column;
+            }
+            
+            .ritual-title {
+                font-size: 2rem; /* Smaller font on mobile */
+            }
+            
+            .ritual-image {
+                height: 200px; /* Smaller height on mobile */
+            }
+            
+            .ritual-card {
+                padding: 20px; /* Less padding on mobile */
+            }
+            
+            /* Adjust navigation for mobile */
+            .nav-links {
+                display: none; /* Hide by default on mobile */
+                width: 100%;
+                flex-direction: column;
+                gap: 15px;
+                margin-top: 15px;
+            }
+            
+            .nav-links.active {
+                display: flex; /* Show when active */
+            }
+            
+            .mobile-menu-btn {
+                display: block; /* Show mobile menu button */
+            }
+            
+            /* Center logo and toggle on mobile */
+            nav {
+                justify-content: space-between;
+            }
+            
+            /* Make buttons full width on very small screens */
+            @media (max-width: 480px) {
+                .card-nav-button,
+                .step-next-button,
+                .step-complete-button,
+                .step-back-button {
+                    width: 100%;
+                    margin: 5px 0;
+                }
+                
+                .step-navigation-card {
+                    flex-direction: column;
+                }
+                
+                .card-navigation {
+                    flex-direction: column;
+                }
+                
+                .progress-indicator {
+                    margin: 15px 0;
+                }
+            }
+        }
+        
+        /* Ensure stars background doesn't cause overflow */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        /* Back button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 20px 0;
+            padding: 8px 16px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Ritual Description */
+        .ritual-description {
+            margin-bottom: 30px;
+        }
+        
+        .ritual-description h2 {
+            margin-bottom: 15px;
+        }
+        
+        .ritual-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .ritual-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .book-ritual {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 600;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .how-to-perform {
+            margin-top: 40px;
+        }
+        
+        .how-to-perform h2 {
+            margin-bottom: 15px;
+        }
+        
+        .how-to-perform p {
+            margin-bottom: 20px;
+        }
+        
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .step-title {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .step-number {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        .reset-button {
+            background: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--text-color);
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .step-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .nav-button {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--text-color);
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .step-indicators {
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .step-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .step-indicator.active {
+            background-color: var(--accent-color);
+        }
+        
+        /* Add constellation styling */
+        .constellation {
+            position: absolute;
+            z-index: -1;
+        }
+        
+        .constellation-line {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform-origin: 0 0;
+            pointer-events: none;
+        }
+        
+        .constellation-star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.3);
+            opacity: 0.7;
+        }
+        
+        /* Card System */
+        .ritual-cards {
+            width: 100%;
+            position: relative;
+        }
+        
+        .ritual-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .ritual-card.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .card-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        /* Update these styles to properly position elements */
+        .card-nav-button[data-prev] {
+            margin-right: 0;
+        }
+        
+        .card-nav-button[data-next] {
+            margin-left: 0;
+        }
+        
+        /* Progress indicator - centered positioning */
+        .progress-indicator {
+            display: flex;
+            gap: 10px;
+            margin: 0;
+            justify-content: center;
+            flex: 1;
+        }
+        
+        /* When both buttons are present, ensure proper spacing */
+        .card-navigation:has([data-prev], [data-next]) {
+            justify-content: space-between;
+        }
+        
+        .card-nav-button {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        
+        .card-nav-button:hover {
+            background-color: #8360c3;
+        }
+        
+        /* Adjust existing components to fit card system */
+        .ritual-description, .materials-needed, .how-to-perform {
+            margin-bottom: 20px;
+        }
+        
+        /* Progress indicator - updated positioning */
+        .progress-indicator {
+            display: flex;
+            gap: 10px;
+            margin: 0;
+        }
+        
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            transition: background-color 0.3s ease;
+        }
+        
+        .progress-dot.active {
+            background-color: var(--accent-color);
+        }
+        
+        .step-navigation-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .step-card-number {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .step-next-button, .step-complete-button {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            border: none;
+            padding: 10px 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .step-next-button:hover, .step-complete-button:hover {
+            background-color: #8360c3;
+        }
+        
+        .step-complete-button {
+            background-color: #4CAF50;
+        }
+        
+        .step-complete-button:hover {
+            background-color: #3e8e41;
+        }
+        
+        .arrow {
+            font-size: 1.1rem;
+        }
+        
+        .step-back-button {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+            border: none;
+            padding: 10px 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .step-back-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Stars background -->
+    <div class="stars" id="stars"></div>
+    
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">ELARA MOONSHADOW</div>
+                <button class="mobile-menu-btn">☰</button>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="rituals.html" class="active">Rituals</a>
+                    <a href="#">Tools</a>
+                    <a href="courses.html">Courses</a>
+                    <a href="blog.html">Blog</a>
+                </div>
+                <button class="theme-toggle">
+                    <i class="fas fa-moon">🌙</i>
+                </button>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        
+        
+        <h1 class="ritual-title" style="text-align: center;">New Moon Manifestation</h1>
+        
+        <div class="ritual-image">
+            <!-- Placeholder for ritual image -->
+            <img src="" alt="New Moon Manifestation Ritual" style="display: none;">
+            <div style="font-size: 3rem;">🖼️</div>
+        </div>
+        
+        <div class="ritual-content">
+            <div class="ritual-main">
+                <div class="ritual-cards">
+                    <!-- Card 1: Description -->
+                    <div class="ritual-card active" id="card-description">
+                        <div class="ritual-description">
+                            <h2>Description</h2>
+                            <p>
+                                The New Moon represents new beginnings and is the perfect time to set intentions for what you wish to manifest in your life. During this ritual, we'll harness the potent energy of the dark moon to plant the seeds of your desires and create a clear pathway for manifestation. This ancient practice has been used for centuries to align personal intentions with cosmic cycles.
+                            </p>
+                        </div>
+                        
+                        <div class="ritual-meta">
+                            <div class="ritual-meta-item">
+                                <span>⏱️</span>
+                                <span>30 minutes</span>
+                            </div>
+                            <div class="ritual-meta-item">
+                                <span>🔰</span>
+                                <span>Beginner</span>
+                            </div>
+                        </div>
+                        
+                        <button class="card-nav-button" data-next="card-materials">Next: Materials Needed →</button>
+                    </div>
+                    
+                    <!-- Card 2: Materials Needed -->
+                    <div class="ritual-card" id="card-materials">
+                        <div class="materials-needed">
+                            <h2>Materials Needed</h2>
+                            <p>Gather these items before beginning</p>
+                            
+                            <div class="material-item">
+                                <div>White candle</div>
+                            </div>
+                            
+                            <div class="material-item">
+                                <div>Matches or lighter</div>
+                            </div>
+                            
+                            <div class="material-item">
+                                <div>Pen and paper</div>
+                            </div>
+                            
+                            <div class="material-item">
+                                <div>Sage bundle or incense for cleansing</div>
+                            </div>
+                            
+                            <div class="material-item">
+                                <div>Crystal (clear quartz or moonstone recommended)</div>
+                            </div>
+                            
+                            <div class="material-item">
+                                <div>Small dish or holder for burning sage/incense</div>
+                            </div>
+                            
+                            <div class="material-item">
+                                <div>Optional: essential oils (jasmine, sandalwood, or bergamot)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-navigation">
+                            <button class="card-nav-button" data-prev="card-description">← Back</button>
+                            <button class="card-nav-button" data-next="card-steps">Next: Ritual Steps →</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 3: Ritual Steps -->
+                    <div class="ritual-card" id="card-steps">
+                        <div class="how-to-perform">
+                            <h2>How to Perform This Ritual</h2>
+                            <p>Follow these steps to properly perform the new moon manifestation. Each step is crucial for the ritual's effectiveness.</p>
+                            
+                            <div class="step-container">
+                                <div class="step-header">
+                                    <div class="step-title" id="step-title">Preparation</div>
+                                    <div class="step-number">Step 1 of 6</div>
+                                </div>
+                                
+                                <div class="step-content" id="step-content">
+                                    <!-- Step content will be dynamically updated -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-navigation">
+                            <div class="progress-indicator" id="ritual-progress">
+                                <div class="progress-dot active"></div>
+                                <div class="progress-dot"></div>
+                                <div class="progress-dot"></div>
+                                <div class="progress-dot"></div>
+                                <div class="progress-dot"></div>
+                                <div class="progress-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        // Create stars background effect
+        function createStars() {
+            const stars = document.getElementById('stars');
+            const count = 250; // Increased from 100 to 250 stars
+            
+            for (let i = 0; i < count; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Random position
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                
+                // Random size with more variation
+                const size = Math.random() * 4; // Increased max size from 3 to 4
+                
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                // Random opacity with some brighter stars
+                star.style.opacity = Math.random() * 0.7 + 0.1; // Increased max opacity
+                
+                // Add twinkling effect to some stars
+                if (Math.random() > 0.7) {
+                    const duration = 2 + Math.random() * 6;
+                    star.style.animation = `twinkle ${duration}s infinite ease-in-out`;
+                }
+                
+                stars.appendChild(star);
+            }
+            
+            // Add constellations
+            createConstellations();
+        }
+        
+        // Create constellations
+        function createConstellations() {
+            const starsContainer = document.getElementById('stars');
+            
+            // Define some simple constellations
+            const constellations = [
+                {
+                    name: 'big-dipper',
+                    stars: [
+                        {x: 15, y: 20}, {x: 20, y: 22}, {x: 25, y: 25}, 
+                        {x: 30, y: 28}, {x: 35, y: 25}, {x: 38, y: 20}, 
+                        {x: 40, y: 15}
+                    ],
+                    lines: [[0,1], [1,2], [2,3], [3,4], [4,5], [5,6]]
+                },
+                {
+                    name: 'cassiopeia',
+                    stars: [
+                        {x: 65, y: 15}, {x: 70, y: 10}, {x: 75, y: 15}, 
+                        {x: 80, y: 10}, {x: 85, y: 15}
+                    ],
+                    lines: [[0,1], [1,2], [2,3], [3,4]]
+                },
+                {
+                    name: 'orion',
+                    stars: [
+                        {x: 45, y: 60}, {x: 50, y: 55}, {x: 52, y: 65}, 
+                        {x: 55, y: 70}, {x: 58, y: 65}, {x: 60, y: 55}, 
+                        {x: 65, y: 60}
+                    ],
+                    lines: [[0,1], [1,2], [2,3], [3,4], [4,5], [5,6], [1,5], [2,4]]
+                }
+            ];
+            
+            // Create each constellation
+            constellations.forEach(constellation => {
+                const constellationEl = document.createElement('div');
+                constellationEl.classList.add('constellation');
+                constellationEl.classList.add(constellation.name);
+                
+                // Create stars
+                constellation.stars.forEach((star, index) => {
+                    const starEl = document.createElement('div');
+                    starEl.classList.add('constellation-star');
+                    
+                    // Random size for constellation stars (larger than background stars)
+                    const size = 2 + Math.random() * 3;
+                    
+                    starEl.style.left = `${star.x}%`;
+                    starEl.style.top = `${star.y}%`;
+                    starEl.style.width = `${size}px`;
+                    starEl.style.height = `${size}px`;
+                    
+                    constellationEl.appendChild(starEl);
+                });
+                
+                // Create lines between stars
+                constellation.lines.forEach(line => {
+                    const star1 = constellation.stars[line[0]];
+                    const star2 = constellation.stars[line[1]];
+                    
+                    const lineEl = document.createElement('div');
+                    lineEl.classList.add('constellation-line');
+                    
+                    // Calculate line position and dimensions
+                    const x1 = star1.x;
+                    const y1 = star1.y;
+                    const x2 = star2.x;
+                    const y2 = star2.y;
+                    
+                    // Calculate length and angle
+                    const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+                    const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+                    
+                    // Set line properties
+                    lineEl.style.left = `${x1}%`;
+                    lineEl.style.top = `${y1}%`;
+                    lineEl.style.width = `${length}%`;
+                    lineEl.style.height = '1px';
+                    lineEl.style.transform = `rotate(${angle}deg)`;
+                    
+                    constellationEl.appendChild(lineEl);
+                });
+                
+                starsContainer.appendChild(constellationEl);
+            });
+        }
+        
+        // Add twinkling animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes twinkle {
+                0% { opacity: 0.1; }
+                50% { opacity: 0.8; }
+                100% { opacity: 0.1; }
+            }
+            
+            /* Add a subtle pulse to constellation stars */
+            .constellation-star {
+                animation: pulse 4s infinite ease-in-out;
+            }
+            
+            @keyframes pulse {
+                0% { box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.2); }
+                50% { box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4); }
+                100% { box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.2); }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Call the function when the page loads
+        window.addEventListener('load', createStars);
+        
+        // Add functionality to material checkboxes
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkboxes = document.querySelectorAll('.material-checkbox');
+            
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('click', function() {
+                    this.classList.toggle('checked');
+                });
+            });
+            
+            // Card navigation
+            const cards = document.querySelectorAll('.ritual-card');
+            const navButtons = document.querySelectorAll('.card-nav-button');
+            
+            navButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Get the target card ID
+                    const nextCardId = this.getAttribute('data-next');
+                    const prevCardId = this.getAttribute('data-prev');
+                    const targetId = nextCardId || prevCardId;
+                    
+                    if (targetId) {
+                        // Show the target card without hiding others
+                        document.getElementById(targetId).classList.add('active');
+                        
+                        // Remove the navigation buttons from the current card
+                        const currentCard = this.closest('.ritual-card');
+                        const cardNavigation = currentCard.querySelector('.card-navigation');
+                        if (cardNavigation) {
+                            cardNavigation.style.display = 'none';
+                        } else {
+                            // For the first card which has a single button
+                            this.style.display = 'none';
+                        }
+                        
+                        // Scroll to the newly revealed card
+                        document.getElementById(targetId).scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Define all steps content
+            const steps = [
+                {
+                    title: "Step 1: Preparation",
+                    content: `
+                        <div class="step-image">
+                            <!-- Placeholder for step image -->
+                        </div>
+                        <div class="step-instructions">
+                            <p>Begin by finding a quiet space where you won't be disturbed. Ideally, this ritual should be performed within 24 hours of the new moon.</p>
+                            <p>Clear the area of clutter and create a comfortable space to sit or stand. You may want to lay down a special cloth or mat to designate your ritual space.</p>
+                        </div>
+                    `
+                },
+                {
+                    title: "Step 2: Cleansing",
+                    content: `
+                        <div class="step-image">
+                            <!-- Placeholder for step image -->
+                        </div>
+                        <div class="step-instructions">
+                            <p>Light your sage bundle or incense and allow the smoke to cleanse your ritual space. Move the smoke around your body, starting from your feet and moving upward.</p>
+                            <p>As you do this, visualize any negative energy or blockages being cleared away, making space for your intentions to manifest.</p>
+                        </div>
+                    `
+                },
+                {
+                    title: "Step 3: Setting Intentions",
+                    content: `
+                        <div class="step-image">
+                            <!-- Placeholder for step image -->
+                        </div>
+                        <div class="step-instructions">
+                            <p>Take your pen and paper and write down what you wish to manifest. Be specific and phrase your intentions in the present tense, as if they have already manifested.</p>
+                            <p>For example, instead of writing "I want to find a new job," write "I am thriving in my fulfilling new career that brings me joy and abundance."</p>
+                        </div>
+                    `
+                },
+                {
+                    title: "Step 4: Candle Ritual",
+                    content: `
+                        <div class="step-image">
+                            <!-- Placeholder for step image -->
+                        </div>
+                        <div class="step-instructions">
+                            <p>Light your white candle, which represents new beginnings and pure intentions. Hold your written intentions near the flame (safely).</p>
+                            <p>Speak your intentions aloud three times, with conviction and belief. Visualize them coming to life as you speak.</p>
+                        </div>
+                    `
+                },
+                {
+                    title: "Step 5: Crystal Amplification",
+                    content: `
+                        <div class="step-image">
+                            <!-- Placeholder for step image -->
+                        </div>
+                        <div class="step-instructions">
+                            <p>Hold your crystal in your dominant hand and close your eyes. Visualize your intentions flowing into the crystal, programming it with your desires.</p>
+                            <p>Place the crystal on top of your written intentions. The crystal will continue to amplify your manifestation energy throughout the lunar cycle.</p>
+                        </div>
+                    `
+                },
+                {
+                    title: "Step 6: Closing the Ritual",
+                    content: `
+                        <div class="step-image">
+                            <!-- Placeholder for step image -->
+                        </div>
+                        <div class="step-instructions">
+                            <p>Express gratitude to the universe for bringing your intentions to fruition. You might say something like, "Thank you for these blessings that are now flowing into my life."</p>
+                            <p>Allow the candle to burn for at least 15 minutes (or until it naturally extinguishes if it's a small candle). Keep your written intentions and crystal together in a safe place until the full moon.</p>
+                        </div>
+                    `
+                }
+            ];
+            
+            // Get elements
+            const stepContainer = document.querySelector('.step-container');
+            const stepTitle = document.getElementById('step-title');
+            const stepContent = document.getElementById('step-content');
+            const progressDots = document.querySelectorAll('#ritual-progress .progress-dot');
+            
+            let currentStep = 0;
+            const totalSteps = steps.length;
+            
+            // Initialize first step
+            updateStepContent();
+            
+            // Remove all existing navigation elements
+            const existingStepNavigation = document.querySelector('.step-navigation');
+            if (existingStepNavigation) {
+                existingStepNavigation.remove();
+            }
+            
+            // Store all created step containers for easy reference
+            const createdStepContainers = [stepContainer];
+            
+            // Add the first step navigation card
+            const firstStepNavigation = document.createElement('div');
+            firstStepNavigation.classList.add('step-navigation-card');
+            firstStepNavigation.innerHTML = `
+                <div></div>
+                <button class="step-next-button">Next <span class="arrow">→</span></button>
+            `;
+            stepContainer.appendChild(firstStepNavigation);
+            
+            // Function to handle next step creation
+            function createNextStep() {
+                if (currentStep < totalSteps - 1) {
+                    // Remove navigation from ALL previous step containers
+                    createdStepContainers.forEach(container => {
+                        const navCard = container.querySelector('.step-navigation-card');
+                        if (navCard) {
+                            navCard.remove();
+                        }
+                    });
+                    
+                    currentStep++;
+                    
+                    // Update progress dots
+                    progressDots.forEach((dot, index) => {
+                        if (index <= currentStep) {
+                            dot.classList.add('active');
+                        } else {
+                            dot.classList.remove('active');
+                        }
+                    });
+                    
+                    // Create a new step container
+                    const newStepContainer = document.createElement('div');
+                    newStepContainer.classList.add('step-container');
+                    newStepContainer.innerHTML = `
+                        <div class="step-header">
+                            <div class="step-title">${steps[currentStep].title}</div>
+                            <div class="step-number">Step ${currentStep + 1} of ${totalSteps}</div>
+                        </div>
+                        <div class="step-content">
+                            ${steps[currentStep].content}
+                        </div>
+                        <div class="step-navigation-card">
+                            <button class="step-back-button"><span class="arrow">←</span> Back</button>
+                            ${currentStep < totalSteps - 1 ? 
+                                `<button class="step-next-button">Next <span class="arrow">→</span></button>` : 
+                                `<button class="step-complete-button">Complete Ritual</button>`}
+                        </div>
+                    `;
+                    
+                    // Add to our tracking array
+                    createdStepContainers.push(newStepContainer);
+                    
+                    // Append the new step after the last step container
+                    const howToPerform = document.querySelector('.how-to-perform');
+                    howToPerform.appendChild(newStepContainer);
+                    
+                    // Add event listener to the new next button
+                    const newNextButton = newStepContainer.querySelector('.step-next-button, .step-complete-button');
+                    if (newNextButton) {
+                        newNextButton.addEventListener('click', function() {
+                            if (currentStep < totalSteps - 1) {
+                                // If not the last step, create the next step
+                                createNextStep();
+                            } else {
+                                // If it's the last step, handle completion
+                                alert('Ritual completed! May your intentions manifest with the power of the new moon.');
+                            }
+                        });
+                    }
+                    
+                    // Add event listener to the back button
+                    const backButton = newStepContainer.querySelector('.step-back-button');
+                    if (backButton) {
+                        backButton.addEventListener('click', function() {
+                            // Remove the current step container
+                            newStepContainer.remove();
+                            
+                            // Remove from tracking array
+                            createdStepContainers.pop();
+                            
+                            // Decrement current step
+                            currentStep--;
+                            
+                            // Update progress dots
+                            progressDots.forEach((dot, index) => {
+                                if (index <= currentStep) {
+                                    dot.classList.add('active');
+                                } else {
+                                    dot.classList.remove('active');
+                                }
+                            });
+                            
+                            // Add navigation back to the previous step container
+                            const previousContainer = createdStepContainers[createdStepContainers.length - 1];
+                            const newNavigation = document.createElement('div');
+                            newNavigation.classList.add('step-navigation-card');
+                            
+                            // First step doesn't need a back button
+                            if (currentStep === 0) {
+                                newNavigation.innerHTML = `
+                                    <div></div>
+                                    <button class="step-next-button">Next <span class="arrow">→</span></button>
+                                `;
+                            } else {
+                                newNavigation.innerHTML = `
+                                    <button class="step-back-button"><span class="arrow">←</span> Back</button>
+                                    <button class="step-next-button">Next <span class="arrow">→</span></button>
+                                `;
+                            }
+                            
+                            previousContainer.appendChild(newNavigation);
+                            
+                            // Add event listeners to the new buttons
+                            const newNextBtn = newNavigation.querySelector('.step-next-button');
+                            if (newNextBtn) {
+                                newNextBtn.addEventListener('click', createNextStep);
+                            }
+                            
+                            const newBackBtn = newNavigation.querySelector('.step-back-button');
+                            if (newBackBtn) {
+                                newBackBtn.addEventListener('click', function() {
+                                    // Similar back functionality for nested back buttons
+                                    previousContainer.remove();
+                                    createdStepContainers.pop();
+                                    currentStep--;
+                                    
+                                    // Update progress dots
+                                    progressDots.forEach((dot, index) => {
+                                        if (index <= currentStep) {
+                                            dot.classList.add('active');
+                                        } else {
+                                            dot.classList.remove('active');
+                                        }
+                                    });
+                                    
+                                    // Add navigation to the previous container
+                                    const prevContainer = createdStepContainers[createdStepContainers.length - 1];
+                                    addNavigationToContainer(prevContainer, currentStep);
+                                    
+                                    // Scroll to the previous container
+                                    prevContainer.scrollIntoView({
+                                        behavior: 'smooth',
+                                        block: 'start'
+                                    });
+                                });
+                            }
+                            
+                            // Scroll to the previous step
+                            previousContainer.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        });
+                    }
+                    
+                    // Scroll to the new step
+                    newStepContainer.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+            
+            // Helper function to add navigation to a container
+            function addNavigationToContainer(container, stepIndex) {
+                const newNavigation = document.createElement('div');
+                newNavigation.classList.add('step-navigation-card');
+                
+                if (stepIndex === 0) {
+                    newNavigation.innerHTML = `
+                        <div></div>
+                        <button class="step-next-button">Next <span class="arrow">→</span></button>
+                    `;
+                } else {
+                    newNavigation.innerHTML = `
+                        <button class="step-back-button"><span class="arrow">←</span> Back</button>
+                        <button class="step-next-button">Next <span class="arrow">→</span></button>
+                    `;
+                }
+                
+                container.appendChild(newNavigation);
+                
+                // Add event listeners
+                const nextBtn = newNavigation.querySelector('.step-next-button');
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', createNextStep);
+                }
+                
+                const backBtn = newNavigation.querySelector('.step-back-button');
+                if (backBtn) {
+                    backBtn.addEventListener('click', function() {
+                        container.remove();
+                        createdStepContainers.pop();
+                        currentStep--;
+                        
+                        // Update progress dots
+                        progressDots.forEach((dot, index) => {
+                            if (index <= currentStep) {
+                                dot.classList.add('active');
+                            } else {
+                                dot.classList.remove('active');
+                            }
+                        });
+                        
+                        const prevContainer = createdStepContainers[createdStepContainers.length - 1];
+                        addNavigationToContainer(prevContainer, currentStep);
+                        
+                        prevContainer.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    });
+                }
+            }
+            
+            // Add event listener to the first next button
+            const firstNextButton = firstStepNavigation.querySelector('.step-next-button');
+            if (firstNextButton) {
+                firstNextButton.addEventListener('click', createNextStep);
+            }
+            
+            // Add CSS for the back button
+            const style = document.createElement('style');
+            style.textContent = `
+                .step-back-button {
+                    background-color: rgba(255, 255, 255, 0.1);
+                    color: var(--text-color);
+                    border: none;
+                    padding: 10px 18px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    transition: background-color 0.3s ease;
+                }
+                
+                .step-back-button:hover {
+                    background-color: rgba(255, 255, 255, 0.2);
+                }
+                
+                .step-navigation-card {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-top: 20px;
+                    padding-top: 15px;
+                    border-top: 1px solid rgba(255, 255, 255, 0.1);
+                }
+            `;
+            document.head.appendChild(style);
+            
+            function updateStepContent() {
+                // Update the step title and content
+                stepTitle.textContent = steps[currentStep].title;
+                stepContent.innerHTML = steps[currentStep].content;
+            }
+        });
+        
+        // Add mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    // Toggle between menu and close icons
+                    this.textContent = this.textContent === '☰' ? '✕' : '☰';
+                });
+            }
+            
+            // Close menu when clicking a link
+            const navLinksItems = document.querySelectorAll('.nav-links a');
+            navLinksItems.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        navLinks.classList.remove('active');
+                        if (mobileMenuBtn) {
+                            mobileMenuBtn.textContent = '☰';
+                        }
+                    }
+                });
+            });
+            
+            // Adjust layout on window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    navLinks.classList.remove('active');
+                    if (mobileMenuBtn) {
+                        mobileMenuBtn.textContent = '☰';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
