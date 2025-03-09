@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Research - Issam Laradji</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="scanline"></div>
+    
+    <header>
+        <div class="logo">ISSAM LARADJI</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="research.html" class="active">RESEARCH</a></li>
+                <li><a href="publications.html">PUBLICATIONS</a></li>
+                <li><a href="#">PROJECTS</a></li>
+                <li><a href="#">TEACHING</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+        <button class="dark-mode-toggle" style="position: absolute; right: 20px; top: 20px;">◐</button>
+    </header>
+
+    <section class="research-areas">
+        <div class="container">
+            <h2>RESEARCH AREAS</h2>
+            
+            <p class="research-intro">
+                MY RESEARCH FOCUSES ON DEVELOPING EFFICIENT MACHINE 
+                LEARNING ALGORITHMS FOR COMPUTER VISION AND NATURAL 
+                LANGUAGE PROCESSING.
+            </p>
+            
+            <div class="research-tabs">
+                <button class="tab-btn active"><span class="tab-icon">📊</span> Machine Learning</button>
+                <button class="tab-btn"><span class="tab-icon">💬</span> NLP</button>
+                <button class="tab-btn"><span class="tab-icon">👁️</span> Computer Vision</button>
+                <button class="tab-btn"><span class="tab-icon">⚙️</span> Optimization</button>
+                <button class="tab-btn"><span class="tab-icon">🔍</span> Applications</button>
+            </div>
+            
+            <div class="research-papers">
+                <!-- Paper cards here -->
+                <div class="paper-card">
+                    <div class="paper-image">
+                        <div class="paper-diagram"></div>
+                    </div>
+                    <div class="paper-content">
+                        <h3>FEW-SHOT LEARNING WITH META-LEARNING</h3>
+                        <div class="paper-date">2020-2022</div>
+                        
+                        <p>DEVELOPING ALGORITHMS THAT CAN LEARN FROM 
+                        VERY FEW EXAMPLES BY LEVERAGING META-
+                        LEARNING APPROACHES.</p>
+                        
+                        <div class="paper-impact">
+                            <h4>IMPACT:</h4>
+                            <p>REDUCED THE NUMBER OF REQUIRED TRAINING 
+                            EXAMPLES BY 80% WHILE MAINTAINING MODEL 
+                            PERFORMANCE.</p>
+                        </div>
+                        
+                        <a href="#" class="view-paper-btn">VIEW PAPER</a>
+                    </div>
+                </div>
+                
+                <div class="paper-card">
+                    <div class="paper-image">
+                        <div class="paper-diagram"></div>
+                    </div>
+                    <div class="paper-content">
+                        <h3>SELF-SUPERVISED REPRESENTATION LEARNING</h3>
+                        <div class="paper-date">2021-PRESENT</div>
+                        
+                        <p>CREATING METHODS FOR LEARNING USEFUL 
+                        REPRESENTATIONS WITHOUT LABELED DATA 
+                        THROUGH SELF-SUPERVISION.</p>
+                        
+                        <div class="paper-impact">
+                            <h4>IMPACT:</h4>
+                            <p>ACHIEVED STATE-OF-THE-ART RESULTS ON 
+                            BENCHMARK DATASETS WITH 40% LESS LABELED 
+                            DATA.</p>
+                        </div>
+                        
+                        <a href="#" class="view-paper-btn">VIEW PAPER</a>
+                    </div>
+                </div>
+                
+                <div class="paper-card">
+                    <div class="paper-image">
+                        <div class="paper-diagram"></div>
+                    </div>
+                    <div class="paper-content">
+                        <h3>EFFICIENT DEEP LEARNING</h3>
+                        <div class="paper-date">2019-2022</div>
+                        
+                        <p>DESIGNING LIGHTWEIGHT NEURAL NETWORK 
+                        ARCHITECTURES THAT MAINTAIN PERFORMANCE 
+                        WHILE REDUCING COMPUTATIONAL COSTS.</p>
+                        
+                        <div class="paper-impact">
+                            <h4>IMPACT:</h4>
+                            <p>REDUCED INFERENCE TIME BY 65% AND MODEL 
+                            SIZE BY 70% WITH MINIMAL ACCURACY LOSS.</p>
+                        </div>
+                        
+                        <a href="#" class="view-paper-btn">VIEW PAPER</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <!-- Footer content -->
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add tab functionality
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const paperCards = document.querySelectorAll('.paper-card');
+            
+            tabButtons.forEach((button, index) => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show/hide papers based on selected tab
+                    if (index === 0) { // Machine Learning tab
+                        paperCards.forEach(card => card.style.display = 'block');
+                    } else {
+                        // For demo purposes, show only one paper for other tabs
+                        paperCards.forEach((card, cardIndex) => {
+                            card.style.display = cardIndex === index - 1 ? 'block' : 'none';
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

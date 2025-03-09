@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>CV - Issam Laradji</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .cv-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            color: #BBBBBB;
+        }
+
+        .cv-section {
+            margin-bottom: 40px;
+        }
+
+        .cv-section-title {
+            color: #33FF33;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #33FF33;
+            padding-bottom: 10px;
+        }
+
+        .cv-item {
+            margin-bottom: 20px;
+        }
+
+        .cv-item-title {
+            color: #33FF33;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .cv-item-date {
+            color: #666;
+            font-style: italic;
+        }
+
+        .cv-item-content {
+            margin-left: 20px;
+        }
+
+        .cv-contact {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .cv-profile {
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        a {
+            color: #33FF33;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .cv-item ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .cv-item ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .cv-item ul li:before {
+            content: ">";
+            position: absolute;
+            left: 0;
+            color: #33FF33;
+        }
+
+        .cv-item p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .cv-item a {
+            color: #33FF33;
+            text-decoration: none;
+            border-bottom: 1px dotted #33FF33;
+        }
+
+        .cv-item a:hover {
+            border-bottom: 1px solid #33FF33;
+        }
+
+        @media (max-width: 768px) {
+            .cv-container {
+                padding: 20px 10px;
+            }
+            
+            .cv-contact {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scanline"></div>
+    
+    <header>
+        <div class="logo">ISSAM LARADJI</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="research.html">RESEARCH</a></li>
+                <li><a href="publications.html">PUBLICATIONS</a></li>
+                <li><a href="#">PROJECTS</a></li>
+                <li><a href="#">TEACHING</a></li>
+                <li><a href="cv.html" class="active">CV</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+        <button class="dark-mode-toggle" style="position: absolute; right: 20px; top: 20px;">◐</button>
+    </header>
+
+    <div class="cv-container">
+        <div class="cv-section">
+            <h1 class="cv-section-title">CONTACT INFORMATION</h1>
+            <div class="cv-contact">
+                <div>Vancouver, British Columbia, Canada</div>
+                <div><a href="mailto:issam.laradji@gmail.com">issam.laradji@gmail.com</a></div>
+            </div>
+        </div>
+
+        <div class="cv-section">
+            <h1 class="cv-section-title">PROFILE</h1>
+            <div class="cv-profile">
+                Issam Laradji is a research scientist at ServiceNow and an adjunct professor at the University of British Columbia. He focuses on building AI models that can help humans achieve their goals in the best possible way. With a postdoc from McGill University and a PhD and MSc from the University of British Columbia, his expertise includes natural language processing, computer vision, and optimization. Issam is passionate about making AI more accessible to everyone and leads an inclusive, thriving community built on collaboration and shared learning. His vision is to create an environment where committed teams can network and work together on ambitious projects to spark curiosity, drive innovation, and advance human's potential in what is possible.
+            </div>
+        </div>
+
+        <div class="cv-section">
+            <h1 class="cv-section-title">EDUCATION</h1>
+            <div class="cv-item">
+                <div class="cv-item-title">Ph.D. in Computer Science</div>
+                <div class="cv-item-date">Sep 2014 - May 2020</div>
+                <div class="cv-item-content">
+                    <ul>
+                        <li>University of British Columbia (UBC)</li>
+                        <li>Supervisor: Mark Schmidt</li>
+                        <li>GPA: 4.0/4.0</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-item-title">M.Sc. in Information & Computer Science</div>
+                <div class="cv-item-date">Sep 2012 to May 2014</div>
+                <div class="cv-item-content">
+                    <ul>
+                        <li>King Fahd University of Petroleum & Minerals (KFUPM)</li>
+                        <li>Thesis Topic: New Algorithms for Deep Learning Machines</li>
+                        <li>Advisor: Dr. Lahouari Ghouti</li>
+                        <li>GPA: 4.0/4.0</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-item-title">B.Sc. in Information & Computer Science</div>
+                <div class="cv-item-date">Feb 2008 to Aug 2012</div>
+                <div class="cv-item-content">
+                    <ul>
+                        <li>King Fahd University of Petroleum & Minerals (KFUPM)</li>
+                        <li>Last 2 years GPA: 4.0/4.0</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="cv-section">
+            <h1 class="cv-section-title">WORK EXPERIENCE</h1>
+            <div class="cv-item">
+                <div class="cv-item-title">Adjunct Professor at University of British Columbia</div>
+                <div class="cv-item-date">Feb 2023 to Present</div>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-item-title">Staff Research Scientist at ServiceNow</div>
+                <div class="cv-item-date">Aug 2021 to Present</div>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-item-title">Postdoctoral Researcher at McGill</div>
+                <div class="cv-item-date">Aug 2020 to Aug 2021</div>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-item-title">Part-time Research Intern at ServiceNow</div>
+                <div class="cv-item-date">Jan 2021 to Aug 2021</div>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-item-title">Part-time Research Intern at Element AI</div>
+                <div class="cv-item-date">Sep 2017 to Dec 2020</div>
+            </div>
+
+            <!-- ... other work experience items ... -->
+        </div>
+
+        <div class="cv-section">
+            <h1 class="cv-section-title">WORKSHOPS</h1>
+            <div class="cv-item">
+                <ul>
+                    <li>A challenge chair for a CVPR2020 continual learning workshop</li>
+                    <li>A co-organizer for the CVPR 2023 L3D-IVU workshop</li>
+                    <li>A co-organizer for the CVPR 2024 L3D-IVU workshop</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cv-section">
+            <h1 class="cv-section-title">CODING EXPERIENCE</h1>
+            <div class="cv-item">
+                <p>Highly skilled at Python and Pytorch and have created and contributed over hundreds of influential Github repositories for robust, reproducible research and open-source products (<a href="https://github.com/IssamLaradji" target="_blank">https://github.com/IssamLaradji</a>).</p>
+            </div>
+        </div>
+
+        <div class="cv-section">
+            <h1 class="cv-section-title">RESEARCH COMMUNITY SERVICE</h1>
+            <div class="cv-item">
+                <div class="cv-item-date">Sep 2014 to Present</div>
+                <p>Reviewed papers for the following conferences and journals: AISTATS, TPAMI, ICML, NeurIPS, CDMA, BMVC, ICLR, WACV, AAAI, MAIS, CVPR, ECCV/ICCV, EMNLP, Neural Networks, and Neurocomputing.</p>
+                <ul>
+                    <li>Created and Organized the CVPR 2022 Workshop on Learning from Limited Labelled Data for Image and Video Understanding</li>
+                    <li>Led the challenge for the CVPR 2020 Workshop on Continual Learning in Computer Vision</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cv-section">
+            <h1 class="cv-section-title">RECENT SEMINARS</h1>
+            <div class="cv-item">
+                <div class="cv-item-date">Sep 2020 to Present</div>
+                <p>Made tutorials and demos around best practices for building, managing, and visualizing large-scale experiments, large language models, 2D/3D Computer Vision and Optimization at UBC, Youtube, McGill, and KFUPM.</p>
+            </div>
+        </div>
+
+        <div class="cv-section">
+            <h1 class="cv-section-title">INTERN & STUDENT SUPERVISION</h1>
+            <div class="cv-item">
+                <ul>
+                    <li>Supervised Amirhossein Abaskohi, a student at University of British Columbia that led to multiple papers at NeurIPS workshop papers</li>
+                    <li>Supervised Amrutha Ramesh, a student at University of British Columbia that led to multiple papers at NeurIPS workshop papers</li>
+                    <li>Supervised Gaurav Sahu, a student at University of Waterloo that led to multiple papers at EMNLP</li>
+                    <li>Supervised Yuhongze Zhou, a student at McGill that led to a spotlight paper at BMVC2022</li>
+                    <li>Supervised Michael Noukhovitch, a student at MILA that led to a workshop paper at NeurIPS 2022</li>
+                    <!-- ... other supervision items ... -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="cv-section">
+            <h1 class="cv-section-title">LARGE-SCALE EXPERIMENTS</h1>
+            <div class="cv-item">
+                <p>Created an influential codebase called Haven-AI (<a href="https://github.com/haven-ai/haven-ai" target="_blank">https://github.com/haven-ai/haven-ai</a>) to help people launch, manage, and visualize thousands of reproducible experiments so that they get research papers published, win at competitions and develop great products.</p>
+            </div>
+        </div>
+
+        <div class="cv-section">
+            <h1 class="cv-section-title">TEACHING EXPERIENCE</h1>
+            <div class="cv-item">
+                <ul>
+                    <li>McGill Capstone - Created large-scale experimentation framework (2020-2021)</li>
+                    <li>UBC CPSC 340 course - Machine Learning and Data Mining (2015-2016)</li>
+                    <li>UBC CPSC 210 course - Software Construction (2015)</li>
+                    <li>UBC CPSC 221 course - Basic Algorithms and Data Structures (2015)</li>
+                    <li>UBC CPSC 422 course - Advanced Artificial Intelligence (2015)</li>
+                    <li>UBC CPSC 322 course - Artificial Intelligence (2014)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cv-section">
+            <h1 class="cv-section-title">AWARDS AND SCHOLARSHIPS</h1>
+            <div class="cv-item">
+                <ul>
+                    <li>MITACS Postdoc Accelerate award (2020)</li>
+                    <li>Teaching assistant award at UBC CS department (2015)</li>
+                    <li>Big Data University Innovation Prize at SportsHack (2015)</li>
+                    <li>Google Summer of Code (2014)</li>
+                    <li>PhD Four Year Fellowship at UBC (2016-2020)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
