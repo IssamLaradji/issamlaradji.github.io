@@ -28,3 +28,10 @@ function scrollToResearch(event) {
         behavior: 'smooth'
     });
 } 
+
+function scrollToEvents(event) {
+    event.preventDefault();
+    document.querySelector('.events-section').scrollIntoView({
+        behavior: 'smooth'
+    });
+} 

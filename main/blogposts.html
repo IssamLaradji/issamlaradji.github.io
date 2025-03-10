@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Blog Posts - Issam Laradji</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="scanline"></div>
+    
+    <header>
+        <div class="logo">ISSAM LARADJI</div>
+        <nav>
+           <nav>
+            <ul>
+                <li><a href="home.html"><- Back to Home</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="blog-areas">
+        <div class="container">
+            <h2>BLOG POSTS</h2>
+            
+            <p class="blog-intro">
+                SHARING INSIGHTS AND EXPERIENCES IN MACHINE LEARNING, 
+                RESEARCH, AND TECHNOLOGY.
+            </p>
+            
+            
+            
+            <div class="blog-posts">
+                <a href="#" class="blog-card">
+                    <div class="blog-content">
+                        <div class="blog-date">
+                            <span class="month">MAR</span>
+                            <span class="day">15</span>
+                            <span class="year">2024</span>
+                        </div>
+                        <h3>Understanding Transformer Architecture: A Deep Dive</h3>
+                        <p>An in-depth exploration of transformer architecture, its components, and why it's revolutionizing natural language processing and beyond.</p>
+                        <div class="blog-tags">
+                            <span class="tag">ML/AI</span>
+                            <span class="tag">Tutorial</span>
+                        </div>
+                        <div class="read-more-btn">Read More →</div>
+                    </div>
+                </a>
+
+                <a href="#" class="blog-card">
+                    <div class="blog-content">
+                        <div class="blog-date">
+                            <span class="month">MAR</span>
+                            <span class="day">10</span>
+                            <span class="year">2024</span>
+                        </div>
+                        <h3>Optimizing Neural Networks: Latest Research Findings</h3>
+                        <p>Recent discoveries in optimization techniques for deep learning models, including comparative analysis of different approaches and their impact on model performance.</p>
+                        <div class="blog-tags">
+                            <span class="tag">Research</span>
+                        </div>
+                        <div class="read-more-btn">Read More →</div>
+                    </div>
+                </a>
+
+                <a href="#" class="blog-card">
+                    <div class="blog-content">
+                        <div class="blog-date">
+                            <span class="month">MAR</span>
+                            <span class="day">05</span>
+                            <span class="year">2024</span>
+                        </div>
+                        <h3>Getting Started with PyTorch: A Beginner's Guide</h3>
+                        <p>A comprehensive tutorial for beginners looking to start their journey with PyTorch. Includes practical examples and best practices for deep learning implementation.</p>
+                        <div class="blog-tags">
+                            <span class="tag">Tutorial</span>
+                            <span class="tag">ML/AI</span>
+                        </div>
+                        <div class="read-more-btn">Read More →</div>
+                    </div>
+                </a>
+
+                <a href="#" class="blog-card">
+                    <div class="blog-content">
+                        <div class="blog-date">
+                            <span class="month">FEB</span>
+                            <span class="day">28</span>
+                            <span class="year">2024</span>
+                        </div>
+                        <h3>The Future of AI: Reflections on Recent Developments</h3>
+                        <p>Personal insights on the current state of AI, emerging trends, and predictions for the future of machine learning and artificial intelligence.</p>
+                        <div class="blog-tags">
+                            <span class="tag">Thoughts</span>
+                        </div>
+                        <div class="read-more-btn">Read More →</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+            <div class="footer-section">
+                <ul style="display: flex; gap: 15px; list-style: none; padding: 0;">
+                    <li><a href="https://scholar.google.ca/citations?user=8vRS7F0AAAAJ&hl=en"><span class="icon">🎓</span> GOOGLE SCHOLAR</a></li>
+                    <li><a href="https://github.com/IssamLaradji"><span class="icon">🐱</span> GITHUB</a></li>
+                    <li><a href="https://www.linkedin.com/in/issam-laradji-67ba1a99/"><span class="icon">🔗</span> LINKEDIN</a></li>
+                    <li><a href="https://twitter.com/ILaradji"><span class="icon">🐦</span> TWITTER</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const blogCards = document.querySelectorAll('.blog-card');
+            
+            tabButtons.forEach((button, index) => {
+                button.addEventListener('click', function() {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    if (index === 0) { // All Posts tab
+                        blogCards.forEach(card => card.style.display = 'block');
+                    } else {
+                        blogCards.forEach((card, cardIndex) => {
+                            card.style.display = cardIndex === index - 1 ? 'block' : 'none';
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
