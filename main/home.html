@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+    <title>Issam Laradji</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="scanline"></div>
+    
+    <header>
+        <div class="logo">ISSAM LARADJI</div>
+        <nav>
+            <ul>
+                <li><a href="home.html" class="active">HOME</a></li>
+                <li><a href="#research" onclick="scrollToResearch(event)">RESEARCH</a></li>
+                <li><a href="publications.html">PUBLICATIONS</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="#contact" onclick="scrollToContact(event)">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="terminal-box">
+                    <div class="terminal-header">PERSONNEL FILE #3-6-9</div>
+                    <div style="display: flex; align-items: flex-start;">
+                        <div style="flex: 1;">
+                            <h1 id="name-title">ISSAM LARADJI</h1>
+                            <p>⬤ RESEARCH SCIENTIST & ADJUNCT PROFESSOR</p>
+                            <p>ADVANCING THE FIELDS OF <span style="color: #33FF33;">MACHINE LEARNING</span>,
+                            <span style="color: #33FF33;">COMPUTER VISION</span>, AND
+                            <span style="color: #33FF33;">NATURAL LANGUAGE PROCESSING</span></p>
+                            <p>THROUGH INNOVATIVE RESEARCH AND EDUCATION.</p>
+                            <div style="margin-top: 30px; display: flex; flex-direction: column; gap: 20px;">
+                                <div style="display: flex; gap: 30px;">
+                                    <a href="#" style="margin-right: 30px;">ACCESS RESEARCH</a>
+                                    <a href="#contact" onclick="scrollToContact(event)">ESTABLISH CONTACT</a>
+                                </div>
+                                
+                                <!-- Social Links -->
+                                <div class="social-links">
+                                    <ul style="display: flex; gap: 15px; list-style: none; padding: 0;">
+                                        <li><a href="https://scholar.google.ca/citations?user=8vRS7F0AAAAJ&hl=en"><span class="icon">🎓</span> GOOGLE SCHOLAR</a></li>
+                                        <li><a href="https://github.com/IssamLaradji"><span class="icon">🐱</span> GITHUB</a></li>
+                                        <li><a href="https://www.linkedin.com/in/issam-laradji-67ba1a99/"><span class="icon">🔗</span> LINKEDIN</a></li>
+                                        <li><a href="https://twitter.com/ILaradji"><span class="icon">🐦</span> TWITTER</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-left: 20px; width: 400px;">
+                            <div class="robco-header">VAULT-TEC PERSONNEL IMAGE</div>
+                            <div style="height: 400px; border: 1px solid #00FF00; display: flex; justify-content: center; align-items: center; background-color: rgba(0, 255, 0, 0.05);">
+                                <img src="issam.jpeg" alt="Issam Laradji's Photo" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div style="text-align: right; margin-top: 5px; font-size: 0.8em;">
+                               STATUS: ACTIVE
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="stats-counter-section">
+        <div class="stats-counter-container">
+            <div class="stats-counter-item">
+                <div class="stats-counter-number">50+</div>
+                <div class="stats-counter-label">Papers Published</div>
+            </div>
+            
+            <div class="stats-counter-item">
+                <div class="stats-counter-number">3500+</div>
+                <div class="stats-counter-label">Citations</div>
+            </div>
+            
+            <div class="stats-counter-item">
+                <div class="stats-counter-number">120+</div>
+                <div class="stats-counter-label">Apps Built</div>
+            </div>
+            
+            <div class="stats-counter-item">
+                <div class="stats-counter-number">30+</div>
+                <div class="stats-counter-label">Talks & Workshops</div>
+            </div>
+        </div>
+    </div>
+
+    <section class="about-section">
+        <div class="section-bg-pattern"></div>
+        <div class="section-container">
+            <div class="subject-header">
+                <span class="arrow-icon">▶</span> 
+            </div>
+            <div class="section-header">
+                <h2>ABOUT ME</h2>
+            </div>
+            
+            <div style="display: flex; gap: 30px;">
+                <div class="bio-data" style="flex: 1;">
+                    <div class="robco-header">ROBCO INDUSTRIES (TM)</div>
+                    <div class="terminal-header">BIOGRAPHICAL DATA</div>
+                    
+                    <p>• RESEARCH SCIENTIST AT SERVICENOW AND ADJUNCT PROFESSOR AT UBC, 
+                    FOCUSING ON MACHINE LEARNING, COMPUTER VISION, AND NATURAL LANGUAGE
+                    PROCESSING.</p>
+                    
+                    <p>• SPECIALIZING IN LARGE-SCALE OPTIMIZATION, FEW-SHOT LEARNING, 
+                    AND SELF-SUPERVISED LEARNING APPROACHES WITH 50+ PUBLICATIONS IN 
+                    TOP-TIER CONFERENCES (NEURIPS, ICML, ICLR, CVPR).</p>
+                    
+                    <p>• COMPLETED PHD AT THE UNIVERSITY OF BRITISH COLUMBIA AND 
+                    POSTDOCTORAL FELLOWSHIP AT MCGILL UNIVERSITY.</p>
+                    
+                    <p>• LEADING AI RESEARCH INITIATIVES FOR ENTERPRISE APPLICATIONS 
+                    WHILE SUPERVISING GRADUATE STUDENTS AND TEACHING ADVANCED ML COURSES.</p>
+                </div>
+                
+                <div class="bio-data" style="flex: 1;">
+                    <div class="robco-header">ROBCO INDUSTRIES (TM)</div>
+                    <div class="terminal-header">TECH ATTRIBUTES</div>
+                    
+                    <div class="stats-row" style="margin-bottom: 15px;">
+                        <div class="stats-label" style="width: 120px; text-align: left;">ML EXPERTISE:</div>
+                        <div class="stats-bar"><div class="stats-fill" style="width: 95%;"></div></div>
+                        <div class="stats-value">9.5</div>
+                    </div>
+                    
+                    <div class="stats-row" style="margin-bottom: 15px;">
+                        <div class="stats-label" style="width: 120px; text-align: left;">ALGORITHMS:</div>
+                        <div class="stats-bar"><div class="stats-fill" style="width: 90%;"></div></div>
+                        <div class="stats-value">9.0</div>
+                    </div>
+                    
+                    <div class="stats-row" style="margin-bottom: 15px;">
+                        <div class="stats-label" style="width: 120px; text-align: left;">DEEP LEARNING:</div>
+                        <div class="stats-bar"><div class="stats-fill" style="width: 100%;"></div></div>
+                        <div class="stats-value">10</div>
+                    </div>
+                    
+                    <div class="stats-row" style="margin-bottom: 15px;">
+                        <div class="stats-label" style="width: 120px; text-align: left;">COMP VISION:</div>
+                        <div class="stats-bar"><div class="stats-fill" style="width: 85%;"></div></div>
+                        <div class="stats-value">8.5</div>
+                    </div>
+                    
+                    <div class="stats-row" style="margin-bottom: 15px;">
+                        <div class="stats-label" style="width: 120px; text-align: left;">NLP:</div>
+                        <div class="stats-bar"><div class="stats-fill" style="width: 80%;"></div></div>
+                        <div class="stats-value">8.0</div>
+                    </div>
+                    
+                    <div class="stats-row" style="margin-bottom: 15px;">
+                        <div class="stats-label" style="width: 120px; text-align: left;">RESEARCH:</div>
+                        <div class="stats-bar"><div class="stats-fill" style="width: 95%;"></div></div>
+                        <div class="stats-value">9.5</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-cards">
+                <div class="info-card">
+                    <div style="font-size: 24px; margin-bottom: 10px;">📋</div>
+                    <h3>CURRENT POSITION</h3>
+                    <p>RESEARCH SCIENTIST<br>AT SERVICENOW</p>
+                </div>
+                
+                <div class="info-card">
+                    <div style="font-size: 24px; margin-bottom: 10px;">🎓</div>
+                    <h3>ACADEMIC ROLE</h3>
+                    <p>ADJUNCT PROFESSOR<br>AT UBC</p>
+                </div>
+                
+                <div class="info-card">
+                    <div style="font-size: 24px; margin-bottom: 10px;">📍</div>
+                    <h3>LOCATION</h3>
+                    <p>VANCOUVER, CANADA</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="events-section">
+        <div class="section-bg-pattern"></div>
+        <div class="section-container">
+            <div class="subject-header">
+                <span class="arrow-icon">▶</span>
+            </div>
+            <div class="section-header">
+                <h2>UPCOMING EVENTS</h2>
+            </div>
+            
+            <div class="events-container">
+                <div class="event-card blue-theme">
+                    <div class="event-details">
+                        <div class="event-header">
+                            <div class="event-date">
+                                <div class="month">MAR</div>
+                                <div class="day">21</div>
+                            </div>
+                            <div class="event-title">
+                                <h3>Vancouver AI Meetup (VAM!) Night</h3>
+                            </div>
+                        </div>
+                        <p class="event-time">Friday, March 21 • 5:30 PM - 8:00 PM PDT</p>
+                        <p class="event-location">
+                            <span class="location-icon">📍</span>
+                            Northeastern University - Vancouver
+                        </p>
+                        <div class="event-description">
+                            <p>Join us for an evening of AI insights, networking, and knowledge sharing. Features guest speakers, hands-on workshops, and networking opportunities.</p>
+                        </div>
+                        <div class="event-info-row">
+                            <a href="https://lu.ma/vmnumnuj" class="event-button" target="_blank">GET TICKETS</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-card orange-theme">
+                    <div class="event-details">
+                        <div class="event-header">
+                            <div class="event-date">
+                                <div class="month">APR</div>
+                                <div class="day">6</div>
+                            </div>
+                            <div class="event-title">
+                                <h3>AI Python for Beginners: A Crash Course</h3>
+                            </div>
+                        </div>
+                        <p class="event-time">Sunday, April 6 • 9:30 AM - 3:30 PM PDT</p>
+                        <p class="event-location">
+                            <span class="location-icon">📍</span>
+                            2015 Main St, Vancouver
+                        </p>
+                        <div class="event-description">
+                            <p>A 6-hour, in-person/online crash course designed for complete coding beginners. Learn Python basics and build AI-powered tools. No coding experience needed!</p>
+                        </div>
+                        <div class="event-info-row">
+                            <a href="https://lu.ma/q7af8fmp" class="event-button" target="_blank">GET TICKETS</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="research-section">
+        <div class="section-bg-pattern"></div>
+        <div class="section-container">
+            <div class="subject-header">
+                <span class="arrow-icon">▶</span>
+            </div>
+            <div class="section-header">
+                <h2>RESEARCH INTERESTS</h2>
+            </div>
+            <!-- Research Cards After -->
+            <div class="research-cards">
+                <div class="research-card machine-learning">
+                    <div class="card-icon">⬚</div>
+                    <h3>MACHINE LEARNING</h3>
+                    <p>DEVELOPING EFFICIENT ALGORITHMS FOR LARGE SCALE OPTIMIZATION, FEW-SHOT LEARNING, AND SELF-SUPERVISED LEARNING APPROACHES.</p>
+                    <a href="#" class="card-link">ACCESS RESEARCH <span class="plus-icon">+</span></a>
+                </div>
+                
+                <div class="research-card nlp">
+                    <div class="card-icon">⟩</div>
+                    <h3>NATURAL LANGUAGE PROCESSING</h3>
+                    <p>EXPLORING TRANSFORMER ARCHITECTURES, LANGUAGE GENERATION, AND MULTILINGUAL LEARNING FOR PRACTICAL APPLICATIONS.</p>
+                    <a href="#" class="card-link">ACCESS PUBLICATIONS <span class="plus-icon">+</span></a>
+                </div>
+                
+                <div class="research-card computer-vision">
+                    <div class="card-icon">◯</div>
+                    <h3>COMPUTER VISION</h3>
+                    <p>ADVANCING OBJECT DETECTION, IMAGE SEGMENTATION, AND VISUAL UNDERSTANDING THROUGH NOVEL APPROACHES.</p>
+                    <a href="#" class="card-link">ACCESS PROJECTS <span class="plus-icon">+</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="contact-section" id="contact">
+        <div class="section-bg-pattern"></div>
+        <div class="section-container">
+            <div class="subject-header">
+                <span class="arrow-icon">▶</span>
+            </div>
+            <div class="section-header">
+                <h2>ESTABLISH CONTACT</h2>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info" style="display: flex; gap: 30px;">
+                    <div style="flex: 1;">
+                        <div style="border: 2px solid #FFAA33; padding: 20px; margin-bottom: 30px; background-color: rgba(255, 170, 51, 0.05);">
+                            <div style="height: 400px;">
+                                <img src="issam-contact.jpeg" alt="Issam Laradji" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div style="text-align: right; margin-top: 10px; color: #FFAA33; font-size: 0.8em;">
+                                STATUS: ACTIVE RESEARCHER
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="flex: 1;">
+                        <div style="border: 2px solid #4DFFFF; padding: 30px; background-color: rgba(77, 255, 255, 0.05);">
+                            <h3>CONTACT INFORMATION</h3>
+                            <p class="subtitle">SECURE COMMUNICATION CHANNELS</p>
+                            
+                            <div class="contact-item">
+                                <span class="contact-icon">✉</span>
+                                <a href="mailto:issam.laradji@gmail.com">ISSAM.LARADJI@GMAIL.COM</a>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <span class="contact-icon">📍</span>
+                                <a href="#">VANCOUVER, CANADA</a>
+                            </div>
+
+                            <div class="available-for" style="margin-top: 30px;">
+                                <h4 style="color: #33FF33; margin-bottom: 15px;">AVAILABLE FOR:</h4>
+                                <ul style="list-style: none; padding: 0;">
+                                    <li style="margin-bottom: 10px;">• AI COMMUNITY (VAM!)</li>
+                                    <li style="margin-bottom: 10px;">• AI PYTHON CRASH COURSE (AIPY)</li>
+                                    <li style="margin-bottom: 10px;">• BUILD YOUR AI IDEA (VAS)</li>
+                                    <li style="margin-bottom: 10px;">• GRAD SCHOOL CONSULTATION</li>
+                                    <li style="margin-bottom: 10px;">• AI TALKS FOR ORGANIZATIONS</li>
+                                    <li style="margin-bottom: 10px;">• AGENTIC AI RESEARCH PROJECTS</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 30px;">
+                            <a href="contact.html" class="contact-button">VIEW ALL PROGRAMS & COLLABORATIONS</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-container" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+           
+            <div class="footer-section">
+                <ul style="display: flex; gap: 15px; list-style: none; padding: 0;">
+                    <li><a href="https://scholar.google.ca/citations?user=8vRS7F0AAAAJ&hl=en"><span class="icon">🎓</span> GOOGLE SCHOLAR</a></li>
+                    <li><a href="https://github.com/IssamLaradji"><span class="icon">🐱</span> GITHUB</a></li>
+                    <li><a href="https://www.linkedin.com/in/issam-laradji-67ba1a99/"><span class="icon">🔗</span> LINKEDIN</a></li>
+                    <li><a href="https://twitter.com/ILaradji"><span class="icon">🐦</span> TWITTER</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

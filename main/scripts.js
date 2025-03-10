@@ -14,3 +14,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+function scrollToContact(event) {
+    event.preventDefault();
+    document.getElementById('contact').scrollIntoView({
+        behavior: 'smooth'
+    });
+} 
+
+function scrollToResearch(event) {
+    event.preventDefault();
+    document.querySelector('.research-section').scrollIntoView({
+        behavior: 'smooth'
+    });
+} 
