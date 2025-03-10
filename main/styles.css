@@ -110,46 +110,74 @@ p {
 }
 
 @media (max-width: 768px) {
+    /* Header and Navigation adjustments */
     header {
-        position: relative !important;
-        top: auto !important;
-        flex-direction: column;
-        padding: 10px;
+        /* display: flex;
+        flex-direction: column; */
+        align-items: center; /* Center the content horizontally */
+        text-align: center;
+        /* padding: 15px 0; */
+        /* width: 100%; */
+        box-sizing: border-box;
+        background-color: #001800;
     }
 
     .logo {
-        text-align: center;
-        margin-bottom: 15px;
+        margin: 0 auto 20px auto;
+        padding: 0 15px;
         font-size: 24px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     nav {
-        margin-left: 0;
+        margin: 0;
         width: 100%;
+        padding: 0 15px;
+        box-sizing: border-box;
     }
 
     nav ul {
+        display: flex;
         flex-direction: column;
-        gap: 5px;
+        gap: 10px;
         width: 100%;
+        padding: 0;
+        margin: 0;
+        align-items: center; /* Center the menu items */
     }
 
     nav ul li {
-        margin: 0;
-        width: 100%;
+        margin: 0 auto; /* Center the menu items */
+        width: 90%;
+        max-width: 400px;
+        text-align: center; /* Center the text in each menu item */
     }
 
     nav ul li a {
         display: block;
         text-align: center;
         padding: 12px;
-        border: 1px solid rgba(51, 255, 51, 0.3);
+        background: rgba(0, 24, 0, 0.95);
+        border: 1px solid #33FF33;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        font-size: 16px;
+        color: #33FF33;
+        text-decoration: none;
+        box-sizing: border-box;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+        background: rgba(51, 255, 51, 0.2);
+        transform: translateY(-2px);
     }
 
     .dark-mode-toggle {
         position: absolute;
-        top: 10px;
-        right: 10px;
+        top: 15px;
+        right: 15px;
     }
 
     .program-card,
@@ -224,9 +252,12 @@ p {
         flex-direction: column;
         gap: 20px;
         padding: 0 15px;
+        align-items: center; /* Center the research cards */
     }
 
     .research-card {
+        width: 100%; /* Ensure full width for each card */
+        max-width: 400px; /* Optional: Set a max width for better appearance */
         margin: 0;
         border-radius: 8px;
     }
@@ -282,10 +313,13 @@ p {
     .research-cards {
         flex-direction: column;
         gap: 20px;
+        padding: 0 15px;
+        align-items: center; /* Center the research cards */
     }
 
     .research-card {
-        width: 100%;
+        width: 100%; /* Ensure full width for each card */
+        max-width: 400px; /* Optional: Set a max width for better appearance */
     }
 }
 
@@ -319,7 +353,13 @@ p {
 /* Mobile-friendly bio section */
 @media (max-width: 768px) {
     .bio-data > div {
-        flex-direction: column !important;
+        flex-direction: column !important; /* Stack items vertically */
+        width: 100%; /* Full width for each item */
+    }
+
+    .bio-data > div > div {
+        width: 100%; /* Ensure full width for each sub-item */
+        margin-bottom: 20px; /* Add space between items */
     }
 
     .bio-data > div > div[style*="flex: 3"],
@@ -1643,9 +1683,12 @@ body::before {
         flex-direction: column;
         gap: 20px;
         padding: 0 15px;
+        align-items: center; /* Center the research cards */
     }
 
     .research-card {
+        width: 100%; /* Ensure full width for each card */
+        max-width: 400px; /* Optional: Set a max width for better appearance */
         margin: 0;
         border-radius: 8px;
     }
@@ -1673,6 +1716,12 @@ body::before {
         border-radius: 4px;
         padding: 15px;
         font-size: 16px;
+    }
+
+    .bio-data {
+        display: block; /* Ensure each box is on a separate row */
+        width: 100%; /* Full width for each box */
+        margin-bottom: 20px; /* Add space between boxes */
     }
 }
 
@@ -2333,9 +2382,12 @@ body::before {
         flex-direction: column;
         gap: 20px;
         padding: 0 15px;
+        align-items: center; /* Center the research cards */
     }
 
     .research-card {
+        width: 100%; /* Ensure full width for each card */
+        max-width: 400px; /* Optional: Set a max width for better appearance */
         margin: 0;
         border-radius: 8px;
     }
@@ -2363,6 +2415,12 @@ body::before {
         border-radius: 4px;
         padding: 15px;
         font-size: 16px;
+    }
+
+    .bio-data {
+        display: block; /* Ensure each box is on a separate row */
+        width: 100%; /* Full width for each box */
+        margin-bottom: 20px; /* Add space between boxes */
     }
 }
 
@@ -2500,6 +2558,19 @@ h1, h2, h3 {
     border-color: var(--secondary-color);
     color: var(--secondary-color);
     background-color: rgba(77, 255, 255, 0.1);
+}
+
+.bio-cards {
+    display: flex;
+    gap: 30px;
+    margin-top: 40px;
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    .bio-cards {
+        flex-direction: column;
+    }
 }
 
 .event-card.blue-theme .event-button:hover {
@@ -2745,5 +2816,137 @@ h1, h2, h3 {
 @media (max-width: 768px) {
     .blog-posts {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .hero .terminal-box {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .hero .terminal-box > div {
+        flex-direction: column;
+    }
+
+    .hero .terminal-box div[style*="width: 400px"] {
+        width: 100% !important;
+        margin: 20px 0 0 0;
+    }
+
+    /* Adjust social links */
+    .social-links ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .social-links a {
+        font-size: 0.8em;
+    }
+
+    /* Events container adjustments */
+    .events-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 15px;
+    }
+
+    /* Stats counter adjustments */
+    .stats-counter-section {
+        padding: 20px 15px;
+    }
+
+    .stats-counter-container {
+        padding: 20px 10px;
+    }
+
+    .stats-counter-number {
+        font-size: 36px;
+    }
+
+    .stats-counter-label {
+        font-size: 14px;
+    }
+
+    /* Contact section adjustments */
+    .contact-info > div {
+        flex-direction: column !important;
+    }
+
+    .contact-container {
+        padding: 15px;
+    }
+
+    /* Research cards adjustments */
+    .research-cards {
+        padding: 0 15px;
+    }
+
+    /* General container adjustments */
+    .section-container {
+        padding: 0 15px;
+    }
+
+    .container {
+        padding: 20px 15px;
+    }
+}
+
+.contact-info {
+    border: none; /* Remove the border */
+    box-shadow: none; /* Remove the box shadow */
+    background: none; /* Remove the background */
+}
+
+.contact-info, .contact-info > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Ensure both have the same height */
+}
+
+.contact-info > div {
+    height: 400px; /* Set a fixed height for consistency */
+}
+
+@media (max-width: 768px) {
+    .hero .terminal-box {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .hero .terminal-box > div {
+        flex-direction: column;
+    }
+    
+    .profile-image-container {
+        width: 100% !important;
+        margin: 20px auto !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .profile-image-container div[style*="height: 400px"] {
+        width: 80% !important;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .contact-container {
+        flex-direction: column;
+    }
+    
+    .contact-container .event-card {
+        width: 100% !important;
+        margin-bottom: 20px;
+    }
+    
+    .contact-container .event-card img {
+        max-width: 300px;
+        margin: 0 auto;
+        display: block;
     }
 }

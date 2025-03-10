@@ -28,8 +28,7 @@
         </p>
 
       
-
-        <div class="publications-grid" id="publications-container">
+        <div class="blog-posts" id="publications-container">
             <!-- Publications will be dynamically inserted here -->
         </div>
     </main>
@@ -648,11 +647,12 @@
 
         function createPublicationCard(pub) {
             return `
-                <div class="publication-card">
+                <div class="blog-card">
                     <div class="pub-year">${pub.year}</div>
                     <h3 class="pub-title">${pub.title}</h3>
                     <div class="pub-authors">${pub.authors}</div>
                     <div class="pub-venue">${pub.venue}</div>
+                    <div class="read-more-btn">Read More →</div>
                 </div>
             `;
         }
