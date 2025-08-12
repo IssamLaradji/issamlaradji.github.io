@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Issam Laradji - AI Researcher</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #E8F1F2; /* Light blue-grey */
+            --secondary-color: #B3DDE3; /* Soft blue */
+            --accent-color: #44967E; /* Keeping the teal */
+            --background-color: #0A0B1A; /* Keeping deep navy */
+            --text-color: #FFFFFF; /* Keeping white */
+            --card-color: #1A2A3A; /* Darker blue for cards */
+            --overlay-color: rgba(10, 11, 26, 0.9); /* Keeping deep navy with opacity */
+            --section-alt-color: #142436; /* Darker blue for alternate sections */
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Lora', serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            overflow-x: hidden;
+        }
+        .nav-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, var(--card-color) 0%, rgba(26, 42, 58, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        .nav-banner h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+        .nav-links a:hover {
+            color: var(--accent-color);
+            opacity: 1;
+        }
+        .nav-links a.active {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            opacity: 1;
+        }
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-left: 2rem;
+        }
+        .social-links a {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(180deg, var(--overlay-color) 0%, var(--card-color) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('assets/background.webp') center/cover no-repeat;
+            z-index: 0;
+            opacity: 0.6;
+            filter: brightness(0.7);
+        }
+        .hero-content {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 4rem;
+            border-radius: 15px;
+            position: relative;
+        }
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-color);
+            margin-bottom: 2rem;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            max-width: 600px;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        .content-section {
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .content-section:nth-of-type(even) {
+            background-color: var(--section-alt-color);
+        }
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 4rem;
+            position: relative;
+        }
+        .grid-container {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 1rem;
+        }
+        .grid-container::-webkit-scrollbar {
+            display: none;
+        }
+        .grid-item {
+            background: var(--card-color);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--accent-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 300px;
+            flex: 0 0 auto;
+            scroll-snap-align: start;
+            cursor: pointer;
+        }
+        .grid-item a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .grid-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        .contact-section {
+            background: linear-gradient(180deg, var(--section-alt-color) 0%, var(--card-color) 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-width: 800px;
+            height: 2px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                var(--accent-color),
+                transparent
+            );
+        }
+        .contact-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--primary-color);
+            color: var(--card-color);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .contact-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 77, 76, 0.3);
+        }
+        .scroll-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-color);
+            color: var(--card-color);
+            border: none;
+            padding: 1rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease, opacity 0.3s ease;
+            font-size: 1.5rem;
+            line-height: 1;
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        .scroll-button:hover {
+            background-color: var(--accent-color);
+        }
+        .scroll-button:disabled {
+            opacity: 0;
+            cursor: default;
+        }
+        .scroll-button-left {
+            left: 1rem;
+        }
+        .scroll-button-right {
+            right: 1rem;
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .nav-banner {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            .nav-links {
+                margin-top: 1rem;
+                gap: 1rem;
+            }
+            .social-links {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+            .section-container {
+                padding: 0 2rem;
+            }
+            .scroll-button {
+                width: 2.5rem;
+                height: 2.5rem;
+                font-size: 1.2rem;
+            }
+        }
+        /* Add these styles to your existing CSS */
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 400px;
+        gap: 4rem;
+        align-items: start;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .contact-form-container {
+        text-align: left;
+    }
+
+    .contact-form-container h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+    }
+
+    .contact-form {
+        background-color: var(--card-color);
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        border: 1px solid var(--accent-color);
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--primary-color);
+        font-weight: 600;
+    }
+
+    .required {
+        color: var(--secondary-color);
+        font-weight: normal;
+        opacity: 0.9;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid var(--accent-color);
+        border-radius: 5px;
+        font-family: 'Lora', serif;
+        font-size: 1rem;
+        background-color: white;
+    }
+
+    .form-group textarea {
+        height: 150px;
+        resize: vertical;
+    }
+
+    .radio-group {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    .radio-label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        color: var(--primary-color);
+    }
+
+    .radio-label input[type="radio"] {
+        width: auto;
+        margin-right: 0.5rem;
+    }
+
+    .custom-radio {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--accent-color);
+        border-radius: 50%;
+        margin-right: 0.5rem;
+        position: relative;
+    }
+
+    .radio-label input[type="radio"]:checked + .custom-radio::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 12px;
+        height: 12px;
+        background-color: var(--primary-color);
+        border-radius: 50%;
+    }
+
+    .contact-options {
+        text-align: left;
+    }
+
+    .contact-options h3 {
+        color: var(--secondary-color);
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .option-button {
+        display: block;
+        background-color: #44967E; /* Updated color */
+        color: white;
+        text-decoration: none;
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        font-weight: bold;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .option-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(26, 77, 76, 0.3);
+    }
+
+    @media (max-width: 1024px) {
+        .contact-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .contact-options {
+            margin-top: 2rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .contact-form {
+            padding: 1rem;
+        }
+
+        .contact-form-container h2 {
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .section-container > div {
+            grid-template-columns: 1fr !important;
+            gap: 2rem !important;
+        }
+        
+        .section-container h2 {
+            font-size: 2rem;
+        }
+        
+        .section-container h3 {
+            font-size: 1.2rem;
+        }
+    }
+    </style>
+</head>
+<body>
+    <nav class="nav-banner">
+        <h2>Dr. Issam Laradji</h2>
+        <div class="nav-links">
+            <a href="#upcoming-events">Events</a>
+            <a href="#blog-posts">Blog</a>
+            <a href="#communities">Communities</a>
+            <a href="#research">Research</a>
+            <a href="#publications">Publications</a>
+            <a href="#teaching">Teaching</a>
+            <a href="#contact">Contact</a>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/issam-laradji-67ba1a99/" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://x.com/ILaradji" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a href="https://github.com/IssamLaradji" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://scholar.google.ca/citations?user=8vRS7F0AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-graduation-cap"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header id="about" class="hero">
+        <div class="hero-content">
+            <img src="assets/issam.jpeg" alt="Dr. Issam Laradji" class="profile-image">
+            <h1>Dr. Issam Laradji</h1>
+            <p>AI Research Scientist at ServiceNow<br>Adjunct Professor at University of British Columbia</p>
+
+            <a href="#contact" class="contact-button">Get in Touch</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="content-section" style="padding-top: 4rem;">
+            <div class="section-container">
+                <div style="
+                    display: grid;
+                    grid-template-columns: 450px 400px 400px;
+                    gap: 2rem;
+                    align-items: start;
+                    max-width: 1400px;
+                    margin: 0 auto;
+                ">
+                    <!-- Main content -->
+                    <div style="
+                        background: #1a2634;
+                        padding: 3rem;
+                        border-radius: 15px;
+                        color: white;
+                        height: 100%;
+                    ">
+                        <h2 style="
+                            font-size: 3.5rem;
+                            line-height: 1.1;
+                            margin-bottom: 2rem;
+                            font-weight: bold;
+                        ">Hi there! I am Issam Laradji</h2>
+                        
+                        <h3 style="
+                            font-size: 1.2rem;
+                            line-height: 1.6;
+                            margin-bottom: 2rem;
+                            color: #e6e6e6;
+                        ">A Vancouverite, who loves teaching and running communities to bring people together to learn about AI and build cool stuff</h3>
+                        
+                        <p style="
+                            font-size: 1.1rem;
+                            line-height: 1.8;
+                            color: #e6e6e6;
+                        ">
+                            I completed both my Masters and PhD in Computer Science (specialized in Artificial Intelligence) at the University of British Columbia, followed by a postdoctoral fellowship at McGill University. Currently, I serve as an Adjunct Professor at UBC and work as a Research Scientist at ServiceNow.
+                        </p>
+                    </div>
+
+                    <!-- Image -->
+                    <div style="
+                        background: #1a2634;
+                        padding: 1rem;
+                        border-radius: 15px;
+                        overflow: hidden;
+                    ">
+                        <img src="assets/issam.jpeg" alt="Dr. Issam Laradji" style="
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            border-radius: 10px;
+                        ">
+                    </div>
+
+                    <!-- "I also" card -->
+                    <div style="
+                        background: #1a2634;
+                        padding: 3rem;
+                        border-radius: 15px;
+                        color: white;
+                    ">
+                        <h3 style="
+                            font-size: 2rem;
+                            margin-bottom: 2rem;
+                        ">I also:</h3>
+                        
+                        <div style="display: grid; gap: 1.5rem;">
+                            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                <span style="color: #44967E;">�</span>
+                                <span>Published <strong style="color: #44967E;">50+ research articles</strong> in top-tier journals and conferences</span>
+                            </div>
+
+                            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                <span style="color: #44967E;">�</span>
+                                <span>Developed and maintained <strong style="color: #44967E;">300+ GitHub projects</strong> used worldwide</span>
+                            </div>
+
+                            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                <span style="color: #44967E;">�</span>
+                                <span>Founded <strong style="color: #44967E;">an AI and a BoardGame Community</strong></span>
+                            </div>
+
+                            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                <span style="color: #44967E;">�</span>
+                                <span>Supervised <strong style="color: #44967E;">15+ MSc/PhD students</strong> in AI research</span>
+                            </div>
+
+                            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                <span style="color: #44967E;">�</span>
+                                <span>Delivered <strong style="color: #44967E;">30+ invited talks</strong> at universities, international conferences and workshops</span>
+                            </div>
+
+                            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                <span style="color: #44967E;">�</span>
+                                <span>Expertise in <strong style="color: #44967E;">Computer Vision, Optimization, and Natural Language Processing</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="upcoming-events" class="content-section">
+            <div class="section-container">
+                <h2>Upcoming Events</h2>
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <a href="[your-link-here]">
+                            <h3>AI Workshop Series</h3>
+                            <p>Join us for a series of hands-on workshops exploring the latest in AI technology.</p>
+                            <p style="color: var(--secondary-color); margin-top: 1rem;">March 15, 2024</p>
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <a href="[your-link-here]">
+                            <h3>Deep Learning Conference</h3>
+                            <p>Presenting our latest research on quantum-inspired neural networks.</p>
+                            <p style="color: var(--secondary-color); margin-top: 1rem;">April 2-4, 2024</p>
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <a href="[your-link-here]">
+                            <h3>Vancouver AI Meetup</h3>
+                            <p>Monthly gathering discussing advances in artificial intelligence and machine learning.</p>
+                            <p style="color: var(--secondary-color); margin-top: 1rem;">Last Thursday of every month</p>
+                        </a>
+                    </div>
+                </div>
+                <button class="scroll-button scroll-button-left" data-direction="left" disabled>←</button>
+                <button class="scroll-button scroll-button-right" data-direction="right">→</button>
+            </div>
+        </section>
+
+        <section id="blog-posts" class="content-section">
+            <div class="section-container">
+                <h2>Blog Posts</h2>
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <a href="static/posts/ai_health.html">
+                            <h3>The Future of AI in Healthcare</h3>
+                            <p>Exploring how artificial intelligence is revolutionizing medical diagnosis and treatment planning.</p>
+                            <p style="color: var(--secondary-color); margin-top: 1rem;">February 28, 2024</p>
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <a href="[your-link-here]">
+                            <h3>Understanding Transformer Models</h3>
+                            <p>A deep dive into the architecture that powers modern language models and their applications.</p>
+                            <p style="color: var(--secondary-color); margin-top: 1rem;">February 15, 2024</p>
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <a href="[your-link-here]">
+                            <h3>Optimizing Neural Networks</h3>
+                            <p>Best practices and techniques for training efficient and effective neural networks.</p>
+                            <p style="color: var(--secondary-color); margin-top: 1rem;">January 30, 2024</p>
+                        </a>
+                    </div>
+                </div>
+                <button class="scroll-button scroll-button-left" data-direction="left" disabled>←</button>
+                <button class="scroll-button scroll-button-right" data-direction="right">→</button>
+            </div>
+        </section>
+
+        <section id="communities" class="content-section">
+            <div class="section-container">
+                <h2>Communities</h2>
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <a href="[your-link-here]">
+                            <h3>Vancouver AI Meetup</h3>
+                            <p>Join our monthly gatherings to discuss the latest in AI technology and its applications in various industries.</p>
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <a href="[your-link-here]">
+                            <h3>Vancouver AI Space</h3>
+                            <p>A co-working space for AI enthusiasts and startups. Come work, collaborate, and innovate with like-minded individuals.</p>
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <a href="[your-link-here]">
+                            <h3>Vancouver AI Academy</h3>
+                            <p>Learn AI from industry experts. We offer courses ranging from beginner to advanced levels in machine learning and deep learning.</p>
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <a href="[your-link-here]">
+                            <h3>Boardgames & Chill</h3>
+                            <p>Unwind with fellow academics and tech enthusiasts over strategic board games. Every Friday evening at the Quantum Café.</p>
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <a href="[your-link-here]">
+                            <h3>Magick</h3>
+                            <p>Explore the intersection of quantum physics and consciousness. Monthly discussions on the nature of reality and human potential.</p>
+                        </a>
+                    </div>
+                </div>
+                <button class="scroll-button scroll-button-left" data-direction="left" disabled>←</button>
+                <button class="scroll-button scroll-button-right" data-direction="right">→</button>
+            </div>
+        </section>
+
+        <section id="research" class="content-section">
+            <div class="section-container">
+                <h2>Current Research</h2>
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <a href="[your-link-here]">
+                            <h3>Quantum Error Correction</h3>
+                            <p>Developing novel techniques to mitigate decoherence in quantum systems, enhancing the stability and reliability of quantum computations.</p>
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <a href="[your-link-here]">
+                            <h3>Quantum Machine Learning</h3>
+                            <p>Exploring the intersection of quantum computing and machine learning to create more efficient and powerful AI algorithms.</p>
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <a href="[your-link-here]">
+                            <h3>Quantum Cryptography</h3>
+                            <p>Investigating quantum key distribution protocols and post-quantum cryptography to ensure secure communication in the quantum era.</p>
+                        </a>
+                    </div>
+                </div>
+                <button class="scroll-button scroll-button-left" data-direction="left" disabled>←</button>
+                <button class="scroll-button scroll-button-right" data-direction="right">→</button>
+            </div>
+        </section>
+
+        <section id="publications" class="content-section">
+            <div class="section-container">
+                <h2>Recent Publications</h2>
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <a href="[your-link-here]">
+                            <h3>"Quantum Supremacy in Noisy Intermediate-Scale Quantum Devices"</h3>
+                            <p>Published in Nature Quantum Information, 2023</p>
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <a href="[your-link-here]">
+                            <h3>"Entanglement-Based Quantum Machine Learning for Big Data Analysis"</h3>
+                            <p>Journal of Quantum AI, 2022</p>
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <a href="[your-link-here]">
+                            <h3>"Post-Quantum Cryptography: A Comprehensive Review"</h3>
+                            <p>ACM Computing Surveys, 2023</p>
+                        </a>
+                    </div>
+                </div>
+                <button class="scroll-button scroll-button-left" data-direction="left" disabled>←</button>
+                <button class="scroll-button scroll-button-right" data-direction="right">→</button>
+            </div>
+        </section>
+
+        <section id="teaching" class="content-section">
+            <div class="section-container">
+                <h2>Teaching</h2>
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <a href="[your-link-here]">
+                            <h3>Introduction to Quantum Computing</h3>
+                            <p>An undergraduate course covering the fundamentals of quantum mechanics and quantum computation.</p>
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <a href="[your-link-here]">
+                            <h3>Advanced Quantum Algorithms</h3>
+                            <p>A graduate-level course exploring cutting-edge quantum algorithms and their applications.</p>
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <a href="[your-link-here]">
+                            <h3>Quantum Information Theory Seminar</h3>
+                            <p>A weekly seminar discussing recent advancements in quantum information science.</p>
+                        </a>
+                    </div>
+                </div>
+                <button class="scroll-button scroll-button-left" data-direction="left" disabled>←</button>
+                <button class="scroll-button scroll-button-right" data-direction="right">→</button>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="section-container">
+                <h2>Get in Touch</h2>
+                <div style="
+                    max-width: 800px;
+                    margin: 0 auto 3rem;
+                    background: var(--card-color);
+                    padding: 2rem;
+                    border-radius: 15px;
+                    border: 1px solid var(--accent-color);
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                ">
+                    <p style="
+                        color: var(--primary-color);
+                        font-size: 1.2rem;
+                        margin-bottom: 1.5rem;
+                        text-align: center;
+                    ">
+                        I'm always interested to connect with fellow researchers, industry professionals, and anyone interested in AI. 
+                        Please reach out if you:
+                    </p>
+                    <ul style="
+                        list-style: none;
+                        padding: 0;
+                        margin: 0 auto;
+                        max-width: 600px;
+                    ">
+                        <li style="
+                            display: flex;
+                            align-items: center;
+                            gap: 1rem;
+                            margin-bottom: 1rem;
+                            color: var(--primary-color);
+                            padding: 1rem;
+                            background: var(--section-alt-color);
+                            border-radius: 8px;
+                        ">
+                            <span style="color: var(--accent-color); font-weight: bold;">•</span>
+                            Need a private consultation to explore solutions for your AI challenges
+                        </li>
+                        <li style="
+                            display: flex;
+                            align-items: center;
+                            gap: 1rem;
+                            margin-bottom: 1rem;
+                            color: var(--primary-color);
+                            padding: 1rem;
+                            background: var(--section-alt-color);
+                            border-radius: 8px;
+                        ">
+                            <span style="color: var(--accent-color); font-weight: bold;">•</span>
+                            Are looking for collaboration opportunities in AI
+                        </li>
+                        <li style="
+                            display: flex;
+                            align-items: center;
+                            gap: 1rem;
+                            color: var(--primary-color);
+                            padding: 1rem;
+                            background: var(--section-alt-color);
+                            border-radius: 8px;
+                        ">
+                            <span style="color: var(--accent-color); font-weight: bold;">•</span>
+                            Would like to invite me for a talk
+                        </li>
+                    </ul>
+                </div>
+                <a href="https://www.linkedin.com/in/issam-laradji-67ba1a99/" target="_blank" rel="noopener noreferrer" class="contact-button">
+                    Connect on LinkedIn
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background-color: var(--background-color); padding: 3rem 0; text-align: center;">
+        <div class="section-container" style="max-width: 800px;">
+            <div style="display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem;">
+                <a href="https://www.linkedin.com/in/issam-laradji-67ba1a99/" target="_blank" rel="noopener noreferrer" style="color: var(--primary-color); text-decoration: none;">
+                    <i class="fab fa-linkedin fa-lg"></i>
+                </a>
+                <a href="https://x.com/ILaradji" target="_blank" rel="noopener noreferrer" style="color: var(--primary-color); text-decoration: none;">
+                    <i class="fab fa-x-twitter fa-lg"></i>
+                </a>
+            </div>
+            <p style="color: var(--primary-color); opacity: 0.7; font-size: 0.9rem;">© 2024 Dr. Issam Laradji. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const sections = document.querySelectorAll('section, header');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: "-50% 0px -50% 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        if (link.getAttribute('href') === '#' + id) {
+                            link.classList.add('active');
+                        } else {
+                            link.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        document.querySelectorAll('.content-section').forEach(section => {
+            const container = section.querySelector('.grid-container');
+            const leftButton = section.querySelector('.scroll-button-left');
+            const rightButton = section.querySelector('.scroll-button-right');
+
+            const updateButtonStates = () => {
+                leftButton.disabled = container.scrollLeft <= 0;
+                rightButton.disabled = container.scrollLeft >= container.scrollWidth - container.clientWidth;
+                leftButton.style.opacity = leftButton.disabled ? '0' : '1';
+                rightButton.style.opacity = rightButton.disabled ? '0' : '1';
+            };
+
+            const scroll = (direction) => {
+                const scrollAmount = direction === 'left' ? -container.offsetWidth : container.offsetWidth;
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            };
+
+            leftButton.addEventListener('click', () => scroll('left'));
+            rightButton.addEventListener('click', () => scroll('right'));
+
+            container.addEventListener('scroll', updateButtonStates);
+            updateButtonStates();
+
+            // Show/hide buttons on hover
+            section.addEventListener('mouseenter', () => {
+                leftButton.style.opacity = leftButton.disabled ? '0' : '1';
+                rightButton.style.opacity = rightButton.disabled ? '0' : '1';
+            });
+            section.addEventListener('mouseleave', () => {
+                leftButton.style.opacity = '0';
+                rightButton.style.opacity = '0';
+            });
+        });
+
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = {
+                to: 'issam.laradji@gmail.com',
+                from: formData.get('email'),
+                name: formData.get('name'),
+                message: formData.get('message')
+            };
+            
+            try {
+                // You'll need to replace this with your actual API endpoint
+                const response = await fetch('/api/send-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    alert('Thank you for your message! We will get back to you soon.');
+                    this.reset();
+                } else {
+                    throw new Error('Failed to send message');
+                }
+            } catch (error) {
+                console.error('Error sending message:', error);
+                alert('Sorry, there was an error sending your message. Please try again later.');
+            }
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,52 @@
+/* Modify step layout to place images on top */
+.step-instructions {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.step-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+    font-size: 3rem;
+}
+
+/* Make sure material items display properly */
+.material-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+/* Benefit items styling */
+.benefit-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.benefit-item i {
+    margin-right: 15px;
+    color: var(--accent-color);
+    font-size: 1.2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .step-image {
+        margin-bottom: 15px;
+    }
+    
+    .step-instructions p {
+        margin-bottom: 10px;
+    }
+} 

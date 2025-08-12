@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Dr. Issam Laradji</title>
+    
+    <!-- Common base styles -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Geist, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2d5a3d;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #2d5a3d;
+        }
+
+        /* Main content area */
+        main {
+            min-height: calc(100vh - 200px);
+            padding-top: 80px; /* Account for fixed header */
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-left .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-left .logo-icon {
+            font-size: 1.5rem;
+        }
+
+        .footer-left h3 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .footer-description {
+            color: #ccc;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .footer-email {
+            color: #00d084;
+            text-decoration: underline;
+        }
+
+        .footer-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-nav a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: white;
+        }
+
+        .footer-social {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            color: #ccc;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: #00d084;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+        }
+
+        .footer-logos {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .university-logo, .company-logo {
+            padding: 8px 16px;
+            background: #333;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .footer-copyright {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Page-specific styles for CV page */
+        .cv-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            color: #333;
+        }
+
+        .cv-section {
+            margin-bottom: 40px;
+        }
+
+        .cv-section-title {
+            color: #2d5a3d;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #2d5a3d;
+            padding-bottom: 10px;
+        }
+
+        .cv-item {
+            margin-bottom: 20px;
+        }
+
+        .cv-item-title {
+            color: #2d5a3d;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .cv-item-date {
+            color: #666;
+            font-style: italic;
+        }
+
+        .cv-item-content {
+            margin-left: 20px;
+        }
+
+        .cv-contact {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .cv-profile {
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        a {
+            color: #2d5a3d;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .cv-item ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .cv-item ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .cv-item ul li:before {
+            content: ">";
+            position: absolute;
+            left: 0;
+            color: #2d5a3d;
+        }
+
+        .cv-item p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .cv-item a {
+            color: #2d5a3d;
+            text-decoration: none;
+            border-bottom: 1px dotted #2d5a3d;
+        }
+
+        .cv-item a:hover {
+            border-bottom: 1px solid #2d5a3d;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .cv-container {
+                padding: 20px 10px;
+            }
+            
+            .cv-contact {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .footer-nav {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">🧠 Dr. Issam Laradji</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="blogposts.html">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="cv-container">
+            <div class="cv-section">
+                <h1 class="cv-section-title">CONTACT INFORMATION</h1>
+                <div class="cv-contact">
+                    <div>Vancouver, British Columbia, Canada</div>
+                    <div><a href="mailto:issam.laradji@gmail.com">issam.laradji@gmail.com</a></div>
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h1 class="cv-section-title">PROFILE</h1>
+                <div class="cv-profile">
+                    Issam Laradji is a research scientist at ServiceNow and an adjunct professor at the University of British Columbia. He focuses on building AI models that can help humans achieve their goals in the best possible way. With a postdoc from McGill University and a PhD and MSc from the University of British Columbia, his expertise includes natural language processing, computer vision, and optimization. Issam is passionate about making AI more accessible to everyone and leads an inclusive, thriving community built on collaboration and shared learning. His vision is to create an environment where committed teams can network and work together on ambitious projects to spark curiosity, drive innovation, and advance human's potential in what is possible.
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h1 class="cv-section-title">EDUCATION</h1>
+                <div class="cv-item">
+                    <div class="cv-item-title">Ph.D. in Computer Science</div>
+                    <div class="cv-item-date">Sep 2014 - May 2020</div>
+                    <div class="cv-item-content">
+                        <ul>
+                            <li>University of British Columbia (UBC)</li>
+                            <li>Supervisor: Mark Schmidt</li>
+                            <li>GPA: 4.0/4.0</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cv-item">
+                    <div class="cv-item-title">M.Sc. in Information & Computer Science</div>
+                    <div class="cv-item-date">Sep 2012 to May 2014</div>
+                    <div class="cv-item-content">
+                        <ul>
+                            <li>King Fahd University of Petroleum & Minerals (KFUPM)</li>
+                            <li>Thesis Topic: New Algorithms for Deep Learning Machines</li>
+                            <li>Advisor: Dr. Lahouari Ghouti</li>
+                            <li>GPA: 4.0/4.0</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cv-item">
+                    <div class="cv-item-title">B.Sc. in Information & Computer Science</div>
+                    <div class="cv-item-date">Feb 2008 to Aug 2012</div>
+                    <div class="cv-item-content">
+                        <ul>
+                            <li>King Fahd University of Petroleum & Minerals (KFUPM)</li>
+                            <li>Last 2 years GPA: 4.0/4.0</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h1 class="cv-section-title">WORK EXPERIENCE</h1>
+                <div class="cv-item">
+                    <div class="cv-item-title">Adjunct Professor at University of British Columbia</div>
+                    <div class="cv-item-date">Feb 2023 to Present</div>
+                </div>
+
+                <div class="cv-item">
+                    <div class="cv-item-title">Staff Research Scientist at ServiceNow</div>
+                    <div class="cv-item-date">Aug 2021 to Present</div>
+                </div>
+
+                <div class="cv-item">
+                    <div class="cv-item-title">Postdoctoral Researcher at McGill</div>
+                    <div class="cv-item-date">Aug 2020 to Aug 2021</div>
+                </div>
+
+                <div class="cv-item">
+                    <div class="cv-item-title">Part-time Research Intern at ServiceNow</div>
+                    <div class="cv-item-date">Jan 2021 to Aug 2021</div>
+                </div>
+
+                <div class="cv-item">
+                    <div class="cv-item-title">Part-time Research Intern at Element AI</div>
+                    <div class="cv-item-date">Sep 2017 to Dec 2020</div>
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h1 class="cv-section-title">COMMUNITY LEADERSHIP</h1>
+                <div class="cv-item">
+                    <div class="cv-item-title">Founder and Co-organizer - Vancouver AI Meetup (VAM!)</div>
+                    <div class="cv-item-date">2024 Nov to Present</div>
+                    <div class="cv-item-content">
+                        <p>Founded and lead the <a href="https://www.vancouveraimeetup.com/" target="_blank">Vancouver AI Meetup</a>, bringing together 500+ members across Vancouver to meet, build, and share cool AI projects. The community organizes monthly events, workshops, and programs to foster collaboration and innovation in artificial intelligence.</p>
+                    </div>
+                </div>
+
+                <div class="cv-item">
+                    <div class="cv-item-title">Instructor - "Build Your AI in Six Weeks" Program</div>
+                    <div class="cv-item-date">2024 Nov to Present</div>
+                    <div class="cv-item-content">
+                        <p>Designed and delivered multiple intensive 6-week AI building courses through Vancouver AI Meetup, teaching participants to develop practical AI applications from concept to deployment. Programs cover machine learning fundamentals, model development, and real-world implementation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h1 class="cv-section-title">PUBLICATIONS</h1>
+                <div class="cv-item">
+                    <div class="cv-item-content">
+                        <p>Author and co-author of <strong>50+ peer-reviewed publications</strong> in top-tier machine learning, computer vision, and natural language processing conferences and journals including NeurIPS, ICML, ICLR, CVPR, ECCV, and BMVC.</p>
+                        
+                        <p>Research contributions span areas including few-shot learning, self-supervised learning, large-scale optimization, object detection, image segmentation, and neural language models. Work has been cited over 3,500 times with multiple papers receiving spotlight and oral presentations.</p>
+                        
+                        <p><strong>Notable publication venues include:</strong></p>
+                        <ul>
+                            <li>Neural Information Processing Systems (NeurIPS)</li>
+                            <li>International Conference on Machine Learning (ICML)</li>
+                            <li>International Conference on Learning Representations (ICLR)</li>
+                            <li>Computer Vision and Pattern Recognition (CVPR)</li>
+                            <li>European Conference on Computer Vision (ECCV)</li>
+                            <li>British Machine Vision Conference (BMVC)</li>
+                            <li>Association for Computational Linguistics (ACL/EMNLP)</li>
+                        </ul>
+                        
+                        <p>For a complete list of publications, please visit: <a href="publications.html" target="_blank">Publications Page</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h1 class="cv-section-title">WORKSHOPS</h1>
+                <div class="cv-item">
+                    <ul>
+                        <li>A challenge chair for a CVPR2020 continual learning workshop</li>
+                        <li>A co-organizer for the CVPR 2023 L3D-IVU workshop</li>
+                        <li>A co-organizer for the CVPR 2024 L3D-IVU workshop</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h1 class="cv-section-title">CODING EXPERIENCE</h1>
+                <div class="cv-item">
+                    <p>Highly skilled at Python and Pytorch and have created and contributed over hundreds of influential Github repositories for robust, reproducible research and open-source products (<a href="https://github.com/IssamLaradji" target="_blank">https://github.com/IssamLaradji</a>).</p>
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h1 class="cv-section-title">RESEARCH COMMUNITY SERVICE</h1>
+                <div class="cv-item">
+                    <div class="cv-item-date">Sep 2014 to Present</div>
+                    <p>Reviewed papers for the following conferences and journals: AISTATS, TPAMI, ICML, NeurIPS, CDMA, BMVC, ICLR, WACV, AAAI, MAIS, CVPR, ECCV/ICCV, EMNLP, Neural Networks, and Neurocomputing.</p>
+                    <ul>
+                        <li>Created and Organized the CVPR 2022 Workshop on Learning from Limited Labelled Data for Image and Video Understanding</li>
+                        <li>Led the challenge for the CVPR 2020 Workshop on Continual Learning in Computer Vision</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h1 class="cv-section-title">RECENT SEMINARS</h1>
+                <div class="cv-item">
+                    <div class="cv-item-date">Sep 2020 to Present</div>
+                    <p>Made tutorials and demos around best practices for building, managing, and visualizing large-scale experiments, large language models, 2D/3D Computer Vision and Optimization at UBC, Youtube, McGill, and KFUPM.</p>
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h1 class="cv-section-title">INTERN & STUDENT SUPERVISION</h1>
+                <div class="cv-item">
+                    <ul>
+                        <li>Supervised Amirhossein Abaskohi, a student at University of British Columbia that led to multiple papers at NeurIPS workshop papers</li>
+                        <li>Supervised Amrutha Ramesh, a student at University of British Columbia that led to multiple papers at NeurIPS workshop papers</li>
+                        <li>Supervised Gaurav Sahu, a student at University of Waterloo that led to multiple papers at EMNLP</li>
+                        <li>Supervised Yuhongze Zhou, a student at McGill that led to a spotlight paper at BMVC2022</li>
+                        <li>Supervised Michael Noukhovitch, a student at MILA that led to a workshop paper at NeurIPS 2022</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h1 class="cv-section-title">LARGE-SCALE EXPERIMENTS</h1>
+                <div class="cv-item">
+                    <p>Created an influential codebase called Haven-AI (<a href="https://github.com/haven-ai/haven-ai" target="_blank">https://github.com/haven-ai/haven-ai</a>) to help people launch, manage, and visualize thousands of reproducible experiments so that they get research papers published, win at competitions and develop great products.</p>
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h1 class="cv-section-title">TEACHING EXPERIENCE</h1>
+                <div class="cv-item">
+                    <ul>
+                        <li>McGill Capstone - Created large-scale experimentation framework (2020-2021)</li>
+                        <li>UBC CPSC 340 course - Machine Learning and Data Mining (2015-2016)</li>
+                        <li>UBC CPSC 210 course - Software Construction (2015)</li>
+                        <li>UBC CPSC 221 course - Basic Algorithms and Data Structures (2015)</li>
+                        <li>UBC CPSC 422 course - Advanced Artificial Intelligence (2015)</li>
+                        <li>UBC CPSC 322 course - Artificial Intelligence (2014)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h1 class="cv-section-title">AWARDS AND SCHOLARSHIPS</h1>
+                <div class="cv-item">
+                    <ul>
+                        <li>MITACS Postdoc Accelerate award (2020)</li>
+                        <li>Teaching assistant award at UBC CS department (2015)</li>
+                        <li>Big Data University Innovation Prize at SportsHack (2015)</li>
+                        <li>Google Summer of Code (2014)</li>
+                        <li>PhD Four Year Fellowship at UBC (2016-2020)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <span class="logo-icon">🧠</span>
+                        <h3>Issam Laradji</h3>
+                    </div>
+                    <p class="footer-description">Research Scientist at ServiceNow and Adjunct Professor at the University of British Columbia (UBC)</p>
+                    <a href="mailto:issam.laradji@gmail.com" class="footer-email">issam.laradji@gmail.com</a>
+                </div>
+                
+                <div class="footer-right">
+                    <nav class="footer-nav">
+                        <a href="../index.html">Home</a>
+                        <a href="research.html">Research</a>
+                        <a href="publications.html">Publications</a>
+                        <a href="cv.html">CV</a>
+                        <a href="blogposts.html">Blog</a>
+                    </nav>
+                    
+                    <div class="footer-social">
+                        <a href="https://www.linkedin.com/in/issam-laradji-67ba1a99/" aria-label="LinkedIn">
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://scholar.google.ca/citations?user=8vRS7F0AAAAJ&hl=en" aria-label="Google Scholar">
+                            <span>🎓</span>
+                            <span>Google Scholar</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-logos">
+                    <div class="university-logo">UBC</div>
+                    <div class="company-logo">ServiceNow</div>
+                </div>
+                <p class="footer-copyright">© 2024 Issam Laradji. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
